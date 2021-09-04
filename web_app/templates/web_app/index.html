@@ -3,9 +3,49 @@
 {% load static %}
 {% block content %}
 
+<!-- Hero Banner -->
+<div class="hero">
+    <img src="{% static 'web_app/img/home/hero/hero1.jpg' %}" alt="">
+    <div class="content">
+        <h1>Torres Contractors</h1>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. At sit, optio sequi quis facilis libero?</p>
+        <div class="row">
+            <a href="{% url 'services' %}" class="btn btn-outline">Services</a>
+            <a href="{% url 'contact' %}" class="btn btn-primary">Request an Estimate</a>
+        </div>
+    </div>
+    <div class="overlay"></div>
+</div>
 
-<h1>Home</h1>
+<!-- Services Section  -->
+<section id="services" class="services bg-light">
+    <header class="section-header">
+        <h2>Services We Offer</h2>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, esse?
+        </p>
+    </header>
+    <div class="flex-items">
+        <div>
+            <img src="{% static 'web_app/img/home/services/maintenance.jpg' %}" alt="">
+            <div class="text-wraper">
+                <h3>Landscaping Maintenance</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, eaque.</p>
+            </div>
 
+        </div>
+        <div>
+            <img src="{% static 'web_app/img/home/services/remodel.jpg' %}" alt="">
+            <h3>Indoor Remodel</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, eaque.</p>
+        </div>
+        <div>
+            <img src="{% static 'web_app/img/home/services/construction.jpg' %}" alt="">
+            <h3>Outdoor Construction</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, eaque.</p>
+        </div>
+    </div>
+</section>
 
 
 {% endblock %}
