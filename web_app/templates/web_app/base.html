@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel='stylesheet' href="{% static 'web_app/css/responsive.css' %}" type='text/css' media='all' />
+    <link rel='stylesheet' href="{% static 'web_app/css/utilities.css' %}" type='text/css' media='all' />
+    <link rel='stylesheet' href="{% static 'web_app/css/style.css' %}" type='text/css' media='all' />
+
+    <!-- Favicon Icon for web, apple, android  -->
+    <!-- <link rel="icon" href="{% static 'website/upload/NVP Fav.png' %}" sizes="32x32" />
+    <link rel="icon" href="{% static 'website/upload/NVP Fav.png' %}" sizes="192x192" />
+    <link rel="apple-touch-icon-precomposed" href="{% static 'website/upload/NVP Fav.png' %}" />
+    <meta name="msapplication-TileImage" content="{% static 'website/upload/NVP Fav.png' %}" /> -->
+
+    <title>Torres Yardworks & Contractors | Houston's Contractors</title>
+</head>
+
+<body>
+
+    <main>
+        <!-- Navbar  -->
+        <div id="navbar" class="navbar top">
+            <!-- Logo  -->
+            <div class="logo">
+                <a href="{% url 'home' %}"><img src="" alt=""></a>
+            </div>
+            <!-- Navbar Links  -->
+            <nav>
+                <ul>
+                    <li>
+                        <a href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'about' %}">About</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'services' %}">Services</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'projects' %}">Projects</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'contact' %}">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+
+</html>
