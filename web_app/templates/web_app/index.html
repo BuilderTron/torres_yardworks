@@ -6,7 +6,7 @@
 <!-- Hero Banner -->
 <div class="hero">
     <img src="{% static 'web_app/img/home/hero/hero1.jpg' %}" alt="">
-    <div class="content">
+    <div class="hero-content">
         <h1>Torres Contractors</h1>
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. At sit, optio sequi quis facilis libero?</p>
         <div class="row">
@@ -18,34 +18,91 @@
 </div>
 
 <!-- Services Section  -->
-<section id="services" class="services bg-light">
+<section id="services" class="services ">
+    <!-- Section Header  -->
     <header class="section-header">
         <h2>Services We Offer</h2>
         <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, esse?
         </p>
     </header>
-    <div class="flex-items">
-        <div>
-            <img src="{% static 'web_app/img/home/services/maintenance.jpg' %}" alt="">
-            <div class="text-wraper">
-                <h3>Landscaping Maintenance</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, eaque.</p>
+    <!-- Services Cards -->
+    <div class="container">
+        <!-- Row Start  -->
+        <div class="row">
+            <!-- Image Card -->
+            <div class="card">
+                <img src="{% static 'web_app/img/home/services/maintenance.jpg' %}" alt="">
+                <div class="details">
+                    <h3>Landscaping <br> Maintenance</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, eaque.</p>
+                    <a href="" class="btn btn-outline">Read More</a>
+                </div>
             </div>
-
-        </div>
-        <div>
-            <img src="{% static 'web_app/img/home/services/remodel.jpg' %}" alt="">
-            <h3>Indoor Remodel</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, eaque.</p>
-        </div>
-        <div>
-            <img src="{% static 'web_app/img/home/services/construction.jpg' %}" alt="">
-            <h3>Outdoor Construction</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, eaque.</p>
+            <!-- Image Card -->
+            <div class="card">
+                <img src="{% static 'web_app/img/home/services/remodel.jpg' %}" alt="">
+                <div class="details">
+                    <h3>Remodel</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, eaque.</p>
+                    <a href="" class="btn btn-outline">Read More</a>
+                </div>
+            </div>
+            <!-- Image Card -->
+            <div class="card">
+                <img src="{% static 'web_app/img/home/services/construction.jpg' %}" alt="">
+                <div class="details">
+                    <h3>Construction</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, eaque.</p>
+                    <a href="" class="btn btn-outline">Read More</a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
+
+<!-- Promo Section  -->
+<section class="promo">
+    <div class="container">
+        <img src="{% static 'web_app/img/home/promo/fall.jpg' %}" alt="">
+    </div>
+</section>
+
+<!-- Free Estimate Section  -->
+<section class="estimate flex-columns">
+    
+        <div class="row">
+            <div class="column">
+                <div class="column-1">
+                    <img src="{% static 'web_app/img/home/estimate/estimate.jpg' %}" alt="" />
+                </div>
+            </div>
+            <div class="column">
+                <div class="column-2 bg-light content">
+                    <h4>Free Estimates Available</h4>
+                    <h2 class="text-primary bold-txt">Let's Work Together</h2>
+                    <p>
+                        Make your landscape a beautiful getaway by working with the experts at <span class="text-primary bold-txt">Torres Contractors</span>!
+                        <br>
+                        From taking care of your lawn to creating a new patio, you can count on us to keep your outside
+                        space in top shape all the time.
+                        <br>
+                        <br>
+                        No matter what your needs or visions might be, you can expect our team to bring you the
+                        solutions you expect. We will treat your landscape with proper care as if it was our own to
+                        ensure your satisfaction and so that you can work with us again in the future.
+                    </p>
+                    <a href="{% url 'contact' %}" class="btn btn-primary">
+                        <i class="fas fa-chevron"></i>
+                        Free Estimate
+                    </a>
+                </div>
+            </div>
+        </div>
+</section>
+
+<!-- Instagram Feed -->
+
 
 
 {% endblock %}

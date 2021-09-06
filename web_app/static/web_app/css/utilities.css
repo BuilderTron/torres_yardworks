@@ -1,6 +1,6 @@
 
 
-/* Text Colors  */
+/* Text */
 .text-primary {
     color: #00A651;
 
@@ -15,6 +15,12 @@
     color: #EF4136;
 
 }
+
+.bold-txt {
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
 
 /* Buttons */
 .btn {
@@ -66,6 +72,20 @@
     background: #f4f4f4;
 }
 
+/* Container  */
+.container {
+    margin: 30px;
+
+}
+
+/* Flex Rows  */
+.row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
 /* Flex Items  */
 .flex-items {
     display: flex;
@@ -75,9 +95,7 @@
     height: 100%;
 }
 
-.flex-items>div {
-    padding: 30px;
-}
+
 
 
 /* Flex Columns  */
