@@ -4,13 +4,13 @@
 {% block content %}
 
 <!-- Hero Banner -->
-<div class="hero">
+<div class=" hero">
     <img src="{% static 'web_app/img/home/hero/hero1.jpg' %}" alt="">
-    <div class="hero-content">
+    <div class="wrapper hero-content">
         <h1>Torres Contractors</h1>
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. At sit, optio sequi quis facilis libero?</p>
         <div class="row">
-            <a href="{% url 'services' %}" class="btn btn-outline">Services</a>
+            <a href="{% url 'about' %}" class="btn btn-outline">About Us</a>
             <a href="{% url 'contact' %}" class="btn btn-primary">Request an Estimate</a>
         </div>
     </div>
@@ -36,7 +36,7 @@
                 <div class="details">
                     <h3>Landscaping <br> Maintenance</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, eaque.</p>
-                    <a href="" class="btn btn-outline">Read More</a>
+                    <a href="{% url 'service_maintenance' %}" class="btn btn-outline">Read More</a>
                 </div>
             </div>
             <!-- Image Card -->
@@ -45,7 +45,7 @@
                 <div class="details">
                     <h3>Remodel</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, eaque.</p>
-                    <a href="" class="btn btn-outline">Read More</a>
+                    <a href="{% url 'service_remodel' %}" class="btn btn-outline">Read More</a>
                 </div>
             </div>
             <!-- Image Card -->
@@ -54,7 +54,7 @@
                 <div class="details">
                     <h3>Construction</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, eaque.</p>
-                    <a href="" class="btn btn-outline">Read More</a>
+                    <a href="{% url 'service_construction' %}" class="btn btn-outline">Read More</a>
                 </div>
             </div>
         </div>
@@ -69,8 +69,7 @@
 </section>
 
 <!-- Free Estimate Section  -->
-<section class="estimate flex-columns">
-    
+<section class="section-wrap flex-columns">
         <div class="row">
             <div class="column">
                 <div class="column-1">

@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Bootstrap  -->
+    
     <!-- CSS Style Sheets -->
 
     <link rel='stylesheet' href="{% static 'web_app/css/responsive.css' %}"/>
@@ -31,7 +33,7 @@
         <!-- Navbar  -->
         <div id="navbar" class="navbar top">
             <!-- Logo  -->
-            <div class="logo">
+            <div class=" logo">
                 <a href="{% url 'home' %}"><img src="{% static 'web_app/img/logos/tc_logo.png' %}" alt=""></a>
             </div>
             <!-- Navbar Links  -->
@@ -44,7 +46,12 @@
                         <a href="{% url 'about' %}" class="nav-links">About</a>
                     </li>
                     <li>
-                        <a href="{% url 'services' %}" class="nav-links">Services</a>
+                        <a href="" class="nav-links">Services</a>
+                        <ul>
+                            <li><a href="{% url 'service_maintenance' %}" class="nav-links">Landscape</a></li>
+                            <li><a href="{% url 'service_remodel' %}" class="nav-links">Remodel</a></li>
+                            <li><a href="{% url 'service_construction' %}" class="nav-links">Construction</a></li>
+                        </ul>
                     </li>
                     <li>
                         <a href="{% url 'projects' %}" class="nav-links">Projects</a>

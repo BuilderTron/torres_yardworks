@@ -48,12 +48,11 @@ img {
     align-items: center;
     justify-content: space-between;
     background: #fff;
-    color: #333;
     width: 100%;
-    height: 70px;
+    /* height: 70px; */
     position: fixed;
     top: 0px;
-    padding: 0 30px;
+    padding: 10 40px;
     transition: 0.5s;
     z-index: 12;
 }
@@ -62,25 +61,74 @@ img {
     background: transparent;
 } */
 
-.navbar a {
+/* .navbar a {
     color: #333;
     padding: 10px 10px;
     margin: 0 5px;
-
-}
+} */
 
 .nav-links:hover {
     border-bottom: #00A651 2px solid;
 }
 
-.navbar ul {
-    display: flex;
-}
+
 
 .navbar .logo {
     font-weight: 400;
+    margin-left: 50px;
 }
 
+nav:after {
+    content: '';
+    clear: both;
+    display: table;
+}
+
+nav ul {
+    float: right;
+    margin-right: 20px;
+    position: relative;
+}
+
+nav ul li {
+    float: left;
+    display: inline-block;
+    background: #fff;
+    margin: 0 5px;
+}
+
+nav ul li a {
+    line-height: 70px;
+    font-size: 18px;
+    padding: 8px 10px;
+}
+
+nav ul ul {
+    position: absolute;
+    top: 90px;
+    opacity: 0;
+    visibility: hidden;
+    transition: top .3s;
+}
+
+nav ul li:hover > ul {
+    top: 70px;
+    opacity: 1;
+    visibility: visible;
+}
+
+nav ul ul li {
+    position: relative;
+    margin: 0px;
+    width: 150px;
+    float: none;
+    display: list-item;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
+/* --------------------------------------------------------------------------- */
+/* HOME PAGE  */
 /* Header  */
 .hero {
     height: 100vh;
@@ -88,6 +136,7 @@ img {
     color: #fff;
 
 }
+
 
 .hero img {
     position: absolute;
@@ -141,6 +190,8 @@ img {
     background: rgba(0, 0, 0, 0.3);
     z-index: -1;
 }
+
+
 
 /* Services  */
 
@@ -252,11 +303,42 @@ img {
     z-index: -1;
 }
 
-.estimate .content {
+.section-wrap .content {
     padding: 100px;
 }
 
+/* --------------------------------------------------------------------------- */
+/* ABOUT PAGE  */
+/* Mr. Torres Bio  */
 
+/* Costumer Testimonials  */
+
+/* Social Media & Local Service Groups  */
+
+/* Request Appointment  */
+
+
+
+
+/* --------------------------------------------------------------------------- */
+/* SERVICES PAGE  */
+
+
+
+
+/* --------------------------------------------------------------------------- */
+/* PROJECTS PAGE  */
+
+
+
+
+/* --------------------------------------------------------------------------- */
+/* CONTACT PAGE  */
+
+
+
+
+/* --------------------------------------------------------------------------- */
 /* Footer  */
 .footer {
     display: flex;
@@ -278,3 +360,6 @@ img {
 .footer .social>* {
     margin-right: 30px;
 }
+
+
+

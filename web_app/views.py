@@ -16,8 +16,16 @@ def about(request):
     return render(request, 'web_app/about.html', {})
 
 
-def services(request):
-    return render(request, 'web_app/services.html', {})
+def service_maintenance(request):
+    return render(request, 'web_app/service_maintenance.html', {})
+
+
+def service_remodel(request):
+    return render(request, 'web_app/service_remodel.html', {})
+
+
+def service_construction(request):
+    return render(request, 'web_app/service_construction.html', {})
 
 
 def projects(request):

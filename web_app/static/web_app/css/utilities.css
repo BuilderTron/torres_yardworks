@@ -72,6 +72,13 @@
     background: #f4f4f4;
 }
 
+
+/* Page Wrapper  */
+.wrapper {
+    margin: 0 auto;
+    width: 2000px;
+}
+
 /* Container  */
 .container {
     margin: 30px;
@@ -95,6 +102,62 @@
     height: 100%;
 }
 
+/* Page Header  */
+.page-header {
+    height: 50vh;
+    position: relative;
+    color: #fff;
+
+}
+
+.page-header img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    overflow: hidden;
+}
+
+.page-h-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 110%;
+    padding: 0 50px;
+}
+
+.page-h-content h1 {
+    font-size: 55px;
+
+}
+
+.page-h-content p {
+    font-size: 23px;
+    max-width: 600px;
+    margin: 20px 0 30px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+}
+
+/* Our Mission */
+.mission .section-header {
+    padding: 50px;
+    position: relative;
+    background:#fff;
+}
 
 
 
