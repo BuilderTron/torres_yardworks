@@ -6,14 +6,18 @@ urlpatterns = [
 
     path('about', views.about, name="about"),
 
-    path('service_maintenance', views.service_maintenance, name="service_maintenance"),
-    path('service_remodel', views.service_remodel, name="service_remodel"),
-    path('service_construction', views.service_construction, name="service_construction"),
+    path('services', views.services, name="services"),
+    path('lawn', views.lawn, name="lawn"),
+    path('landscape', views.landscape, name="landscape"),
+    path('outdoor', views.outdoor, name="outdoor"),
+    path('indoor', views.indoor, name="indoor"),
 
-    path('projects', views.projects, name="projects"),
+    path('gallery', views.gallery, name="gallery"),
 
     path('contact', views.contact, name="contact"),
+    
+    path('free_quote', views.free_quote, name="free_quote"),
 
-    path('test', views.test, name="test"),
+    # path('test', views.test, name="test"),
 
 ]

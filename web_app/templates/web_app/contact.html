@@ -1,21 +1,88 @@
 {% extends "web_app/base.html" %}
-
 {% load static %}
 {% block content %}
 
-<!-- Hero  -->
-<div class="page-header">
-    <img src="{% static 'web_app/img/home/hero/hero1.jpg' %}" alt="">
-    <div class="page-h-content bold-txt">
-        <h1>Contact Us</h1>
-        <!-- <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. At sit, optio sequi quis facilis libero?</p> -->
-    </div>
-    <div class="overlay"></div>
-</div>
 
-<!-- Photo Grid Projects  -->
-<secction class="grid">
-    
-</secction>
+
+    <!-- Inner_Heading Start-->
+    <div class="inner_page_bnr">
+      <div class="container">
+        <h2>Contact Us</h2>
+      </div>
+    </div>
+    <!-- Inner_Heading End-->
+    <!-- BreadCrumb Start-->
+    <div class="breadcum_bg">
+      <div class="container">
+        <ol class="breadcrumb">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li class="active">Contact Us</li>
+        </ol>
+      </div>
+    </div>
+    <!-- BreadCrumb End-->
+    <!-- Content_Section Start-->
+    <div class="wdt_100 pad_94_100">
+      <div class="container">
+        <h3 class="black-color mar_btm1">Get In <span class="lytgreen-head">Touch</span></h3>
+        <p class="cnt_txt">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolore mque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore veritatis et quasi architecto.</p>
+        <div class="row">
+          <div class="col-lg-8 col-md-7 col-sm-12 col-xs-12">
+            <form id="contact-form" method="post" action="get_in_touch_form.php">
+              <div class="messages"></div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input id="name" type="text" name="name" placeholder="Name" required="" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input id="email" type="email" name="email" placeholder="Email" title="Please enter a valid email" required="" class="form-control">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input id="subject" type="text" name="subject" placeholder="Subject" required="" class="form-control">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <textarea id="message" name="message" type="text" rows="4" placeholder="Message" class="form-control contact_textarea"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <input type="submit" value="submit now" class="btn submit_now">
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12">
+            <div class="contact_info wdt_100">
+              <ul>
+                <li class="cnt_map_icon">
+                  <p>Wood Workshop, 562, Mallin<br>                Street, New Youk, NY 100 254</p>
+                </li>
+                <li class="cnt_mail_icon">
+                  <p class="cnt_fnt_14">info@landscaping.com<br>                support@landscaping.com</p>
+                </li>
+                <li class="cnt_call_icon">
+                  <p class="cnt_fnt_18">+ 1800 562 2487<br>                + 3215 546 8975</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-12 cnt_map_img">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2381.7399040776495!2d-6.261147484122739!3d53.34791197997939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1						!3m3!3m2!1sen!2sus!4v1462581622087" width="600" height="450" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Content_Section End-->
+
 
 {% endblock %}

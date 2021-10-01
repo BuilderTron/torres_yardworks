@@ -16,24 +16,35 @@ def about(request):
     return render(request, 'web_app/about.html', {})
 
 
-def service_maintenance(request):
-    return render(request, 'web_app/service_maintenance.html', {})
+def services(request):
+    return render(request, 'web_app/services.html', {})
 
 
-def service_remodel(request):
-    return render(request, 'web_app/service_remodel.html', {})
+def lawn(request):
+    return render(request, 'web_app/lawn_gardencare.html', {})
 
 
-def service_construction(request):
-    return render(request, 'web_app/service_construction.html', {})
+def landscape(request):
+    return render(request, 'web_app/landscape_design.html', {})
 
 
-def projects(request):
-    return render(request, 'web_app/projects.html', {})
+def outdoor(request):
+    return render(request, 'web_app/outdoor_remodel.html', {})
+
+
+def indoor(request):
+    return render(request, 'web_app/indoor_remodel.html', {})
+
+
+def gallery(request):
+    return render(request, 'web_app/gallery.html', {})
 
 
 def contact(request):
     return render(request, 'web_app/contact.html', {})
+
+def free_quote(request):
+    return render(request, 'web_app/request_quote.html', {})
 
 # def contact(request):
 #     if request.method == "POST":

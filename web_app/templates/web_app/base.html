@@ -1,87 +1,215 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Font-Awesome link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Bootstrap  -->
-    
-    <!-- CSS Style Sheets -->
-
-    <link rel='stylesheet' href="{% static 'web_app/css/responsive.css' %}"/>
-    <link rel='stylesheet' href="{% static 'web_app/css/utilities.css' %}"/>
-    <link rel='stylesheet' href="{% static 'web_app/css/style.css' %}"/>
+    <meta charset="UTF-8" />
+    <title>Torres Construction | Houston Landscaping & Construction</title>
     <!-- Favicons -->
-    <link rel="icon" href="{% static 'web_app/img/logos/tc_favicon.png' %}" sizes="32x32" />
-    <link rel="icon" href="{% static 'web_app/img/logos/tc_favicon.png' %}" sizes="192x192" />
+    <link rel="icon" href="{% static 'web_app/images/base/logo/tc_favicon.png' %}" sizes="32x32" />
+    <link rel="icon" href="{% static 'web_app/images/base/logo/tc_favicon.png' %}" sizes="192x192" />
     <!-- Mobile Download Icons  -->
-    <link rel="apple-touch-icon-precomposed" href="{% static 'web_app/img/logos/tc_favicon.png' %}" />
-    <meta name="msapplication-TileImage" content="{% static 'web_app/img/logos/tc_favicon.png' %}" />
+    <link rel="apple-touch-icon-precomposed" href="{% static 'web_app/images/base/logos/tc_favicon.png' %}" />
+    <meta name="msapplication-TileImage" content="{% static 'web_app/images/base/logos/tc_favicon.png' %}" />
 
-    <title>TORRES CONTRACTORS | Houston's Landscaping & Construction Contractors</title>
+    <!-- mobile responsive meta-->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- main stylesheet-->
+
+    <link rel="stylesheet" href="{% static 'web_app/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'web_app/css/light_box.css' %}">
+    <link rel="stylesheet" href="{% static 'web_app/plugins/Stroke-Gap-Icons-Webfont/style.css' %}" />
 </head>
 
 <body>
-
-    <main>
-        <!-- Navbar  -->
-        <div id="navbar" class="navbar top">
-            <!-- Logo  -->
-            <div class=" logo">
-                <a href="{% url 'home' %}"><img src="{% static 'web_app/img/logos/tc_logo.png' %}" alt=""></a>
+    <!-- Header Topbar Start-->
+    <div class="hdr_top_bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-6 col-sm-5 col-xs-12 mobile_none">
+                    <span class="landing_gardening_txt">Houston Landscape & Remodeling Company</span>
+                </div>
+                <div class="col-lg-5 col-md-6 col-sm-7 col-xs-12 hdr_cnt">
+                    <ul>
+                        <!-- <li class="hdr_msg_icon"><a href="#">torresyardworks@gmail.com</a></li> -->
+                        <a href="tel:8329713599">
+                            <li class="hdr_call_icon">(832) 971-3599</li>
+                        </a>
+                    </ul>
+                </div>
             </div>
-            <!-- Navbar Links  -->
-            <nav >
-                <ul>
-                    <li>
-                        <a href="{% url 'home' %}" class="nav-links">Home</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'about' %}" class="nav-links">About</a>
-                    </li>
-                    <li>
-                        <a href="" class="nav-links">Services</a>
-                        <ul>
-                            <li><a href="{% url 'service_maintenance' %}" class="nav-links">Landscape</a></li>
-                            <li><a href="{% url 'service_remodel' %}" class="nav-links">Remodel</a></li>
-                            <li><a href="{% url 'service_construction' %}" class="nav-links">Construction</a></li>
+        </div>
+    </div>
+    <!-- Header Topbar End-->
+    <!-- Navbar Start-->
+    <nav id="main-navigation-wrapper" class="navbar navbar-default finance-navbar">
+        <div class="thm-container">
+            <div class="navbar-header">
+                <div class="logo-menu">
+                    <img src="{% static 'web_app/images/base/logo/logo.png' %}" alt="" />
+                </div>
+                <button type="button" data-toggle="collapse" data-target="#main-navigation" aria-expanded="false"
+                    class="navbar-toggle collapsed">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
+                        class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+            </div>
+            <div id="main-navigation" class="collapse navbar-collapse">
+                <a href="{% url 'home' %}" class="logo fl"><img src="{% static 'web_app/images/base/logo/logo.png' %}"
+                        alt="image" /></a>
+                <ul class="nav navbar-nav">
+                    <li class="dropdown"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="dropdown"><a href="{% url 'about' %}">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="{% url 'services' %}" class="nav_drop_ar">Services</a>
+                        <ul class="dropdown-submenu">
+                            <li><a href="{% url 'lawn' %}">Lawn & Garden Care</a></li>
+                            <li>
+                                <a href="{% url 'landscape' %}">Landscape Design</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'outdoor' %}">Exterior Remodel</a>
+                            </li>
+                            <li><a href="{% url 'indoor' %}">Indoor Remodel</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="{% url 'projects' %}" class="nav-links">Projects</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'contact' %}" class="nav-links">Contact</a>
-                    </li>
-                    <li>
-                        <a href="tel:8329713599" class="nav-links">(832) 971-3599</a>
-                    </li>
+                    <li class="dropdown"><a href="{% url 'gallery' %}">Gallery</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
                 </ul>
-            </nav>
+                <div class="request_btn">
+                    <a href="{% url 'free_quote' %}"
+                        class="view-all hvr-bounce-to-right mobile_view request_quote">Request
+                        a quote</a>
+                </div>
+                <div class="responsive_btn">
+                    <a href="{% url 'free_quote' %}"
+                        class="view-all hvr-bounce-to-right mobile_view request_quote">Request
+                        a quote</a>
+                </div>
+            </div>
         </div>
+    </nav>
+    <!-- Navbar End-->
 
-        {% block content %}{% endblock %}
-    </main>
+    {% block content %}{% endblock %}
 
-    <!-- Footer  -->
-    <footer class="footer bg-dark">
-        <div class="social">
-            <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
-            <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
-            <a href="#"><i class="fab fa-youtube fa-2x"></i></a>
+    <!-- Footer_Wrapper Start-->
+    <footer class="wdt_100">
+        <!-- Footer_Container Start-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 ftr_txt_div">
+                    <img src="{% static 'web_app/images/base/logo/logo.png' %}" alt="image" />
+                    <p>
+                        Whether you require design & installation of a brand new landscape project including irrigation, drainage, water features & fountains or are looking for quality lawn maintenance, Torres Yardworks & Contractors can make it happen.
+                    </p>
+                    <ul class="ftr_social">
+                        <li>
+                            <a href="#"><i aria-hidden="true" class="fa fa-facebook"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i aria-hidden="true" class="fa fa-instagram"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i aria-hidden="true" class="fa fa-linkedin"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i aria-hidden="true" class="fa fa-google-plus"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12 ftr_nav">
+                    <h6>Usefull Links</h6>
+                    <ul>
+                        <li>
+                            <a href="{% url 'free_quote' %}"><i aria-hidden="true" class="fa fa-angle-right"></i>Get
+                                Free
+                                Quote</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'about' %}"><i aria-hidden="true" class="fa fa-angle-right"></i>About Us</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'gallery' %}"><i aria-hidden="true"
+                                    class="fa fa-angle-right"></i>Gallery</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'contact' %}"><i aria-hidden="true" class="fa fa-angle-right"></i>Contact
+                                Us</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 ftr_nav ftr_pad_30">
+                    <h6>Our Services</h6>
+                    <ul>
+                        <li>
+                            <a href="{% url 'lawn' %}"><i aria-hidden="true" class="fa fa-angle-right"></i>Lawn & Garden
+                                Care</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'landscape' %}"><i aria-hidden="true"
+                                    class="fa fa-angle-right"></i>Landscape Design</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'outdoor' %}"><i aria-hidden="true" class="fa fa-angle-right"></i>Exterior
+                                Remodel</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'indoor' %}"><i aria-hidden="true" class="fa fa-angle-right"></i>Indoor
+                                Remodel</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 ftr_nav get_in_touch">
+                    <h6>Get In Touch</h6>
+                    <ul>
+                        <li class="ftr_location_icon">
+                            <span class="txt-big">Torres Yardworks & Remodel</span>
+                            <br>
+                            Katy, Texas
+                        </li>
+                        <a href="tel:8329713599">
+                            <li class="ftr_phn_icon ftr_call_txt">(832) 971-3599</li>
+                        </a>
+                        <a href="mailto: torresyardworks@gmail.com">
+                            <li class="ftr_msg_icon">torresyardworks@gmail.com</li>
+                        </a>
+                        <li class="ftr_clock_icon">Monday - Friday : <br> 8:00 am - 5:00 pm</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="text-primary">
-            
+        <!-- Footer_Container End-->
+        <!-- Copyright Start-->
+        <div class="ftr_btm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-8 col-xs-12">
+                        <p>Copyright © Torres Yardworks 2022</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-4 col-xs-12 text-right">
+                        <a href="https://www.lopezbuild.com">
+                            <p>Powered by: Lopezbuild.com</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <p>Copyright &copy; 2021 EdgeLedger</p>
+        <!-- Copyright End-->
     </footer>
+    <!-- Footer_Wrapper End-->
+    <!-- helper js-->
+    <script src="{% static 'web_app/js/jquery.min.js' %}"></script>
+    <script src="{% static 'web_app/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'web_app/js/jquery.mixitup.min.js' %}"></script>
+    <script src="{% static 'web_app/js/jquery.touchSwipe.min.js' %}"></script>
+    <script src="{% static 'web_app/js/theme.js' %}"></script>
+    <script src="{% static 'web_app/js/responsive_bootstrap_carousel.js' %}"></script>
 
+    <script src="{% static 'web_app/js/imagelightbox.min.js' %}"></script>
+    <script src="{% static 'web_app/js/custom.js' %}"></script>
+    <script src="{% static 'web_app/js/isotope.min.js' %}"></script>
+    <script src="{% static 'web_app/js/main.js' %}"></script>
 </body>
 
 </html>

@@ -1,0 +1,121 @@
+{% extends "web_app/base.html" %}
+{% load static %}
+{% block content %}
+
+
+    <!-- Inner_Heading Start-->
+    <div class="inner_page_bnr">
+      <div class="container">
+        <h2>Lawn & Garden Care</h2>
+      </div>
+    </div>
+    <!-- Inner_Heading End-->
+    <!-- BreadCrumb Start-->
+    <div class="breadcum_bg">
+      <div class="container">
+        <ol class="breadcrumb">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li class="active">Lawn & Garden Care</li>
+        </ol>
+      </div>
+    </div>
+    <!-- BreadCrumb End-->
+    <!-- Content_Section Start-->
+    <div class="pad_100 wdt_100">
+      <div class="container service_page">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-12 wdt_left">
+            <ul class="service_nav">
+              <li><a href="{% url 'services' %}">All Services</a></li>
+              <li><a href="{% url 'lawn' %}" class="service_nav_active">Lawn & Garden Care</a></li>
+              <li><a href="{% url 'landscape' %}">Landscape Design</a></li>
+              <li><a href="{% url 'outdoor' %}">Exterior Remodel</a></li>
+              <li><a href="{% url 'indoor' %}">Indoor Remodel</a></li>
+            </ul>
+            <div class="howwehelp_col">
+              <h4>How can we help you?</h4>
+              <p>
+                Contact with us through our
+                representative  or submit a
+                business inquiry online.
+              </p><a href="{% url 'contact' %}" class="contact_btn">Contact Us >> </a>
+            </div>
+            <!-- <div class="download_brochure_Col">
+              <h5>Download Our latest <span>Company Brochure</span> from here</h5><a href="#" class="btn download_btn">download</a>
+            </div> -->
+          </div>
+          <div class="col-lg-8 col-md-8 col-sm-8 wdt_rght">
+            <ul class="law_service_img">
+              <li><span class="image_hover"><img src="{% static 'web_app/images/law_gardner_page/gardner_img1.jpg' %}" alt="image" class="zoom_img_effect"></span></li>
+              <li class="second_img"><span class="image_hover"><img src="{% static 'web_app/images/law_gardner_page/gardner_img2.jpg' %}" alt="image" class="zoom_img_effect"></span></li>
+            </ul>
+            <h4 class="fnt28">Lawn & Garden Care</h4>
+            <p>
+              The team at Torres Yardworks & Contractors understands the importance of a well kept lawn. Its an extension of the
+              identity of your home or business. Thats why we provide a wide range of services. With years of experience
+              and state-of-the-art equipment, Torres Yardworks & Contractors can keep your landscape lush and beautiful
+              all year long.</p>
+            <p>Torres Yardworks & Contractors offer a wide variety of services to help your lawn and landscape reach
+              their fullest
+              potential and maintain it for years to come.</p>
+            <div class="key_benefit_col">
+              <div class="key_benefit_img"><span class="image_hover"><img src="{% static 'web_app/images/law_gardner_page/key_benefit_img.jpg' %}" alt="image" class="zoom_img_effect"></span></div>
+              <div class="key_benefit_desc">
+                <h4 class="fnt28 mar_btm">Lawn Maintenance Care</h4>
+                <p>Using the latest technology and expert insights within the landscaping industry, our professional staff can offer you a range of options to enhance your lawn.</p>
+                <ul class="key_benefit_list">
+                  <li>Weekly Lawn Services</li>
+                  <li class="wdt_40">Sod Installation</li>
+                  <li>Lawn Aeration</li>
+                  <li class="wdt_40">Lawn Seeding</li>
+                  <li>Seasonal Fertilization</li>
+                  <li class="wdt_40">Seasonal Cleanup</li>
+                </ul>
+              </div>
+            </div>
+            <div class="key_benefit_col">
+              <div class="key_benefit_img_r"><span class="image_hover"><img src="{% static 'web_app/images/law_gardner_page/key_benefit_img.jpg' %}" alt="image" class="zoom_img_effect"></span></div>
+              <div class="key_benefit_desc_l">
+                <h4 class="fnt28 mar_btm">Flower Bed Maintenance</h4>
+                <p>If your yard has flower beds, gardens, or any other kind of accent landscaping, we can maintain them.
+                  From pulling weeds or cutting out unwanted plants, to maintaining soil and mulch, we can get your yard
+                  looking beautiful. </p>
+                <ul class="key_benefit_list">
+                  <li>Plant Installation </li>
+                  <li class="wdt_40">Specialized Plant Care</li>
+                  <li>Seasonal Color Design</li>
+                  <li class="wdt_40">Mulching</li>
+                  <li>Freeze Damage Correction</li>
+                  <li class="wdt_40">Weeding & Weed Prevention</li>
+                </ul>
+              </div>
+            </div>
+            <div class="key_benefit_col">
+              <div class="key_benefit_img"><span class="image_hover"><img
+                    src="{% static 'web_app/images/law_gardner_page/key_benefit_img.jpg' %}" alt="image"
+                    class="zoom_img_effect"></span></div>
+              <div class="key_benefit_desc">
+                <h4 class="fnt28 mar_btm">Tree Care</h4>
+                <p>During our landscaping service, we can trim bushes and shrubs that are in your yard. We will work
+                  with any specifications and visions you have for your hedges and shrubs, so we can maintain the yard
+                  you love.</p>
+                <ul class="key_benefit_list">
+                  <li>Tree Planting</li>
+                  <li class="wdt_40">Pruning & Shaping</li>
+                  <li>Deep Root Fertilization</li>
+                  <li class="wdt_40">Root Barrier Installation</li>
+                  <li>Seasonal Trimming</li>
+                  <li class="wdt_40">Cabling & Bracing</li>
+                  <li>Stump Grinding & Removal</li>
+                  <li class="wdt_40">Storm Damage Clean-Up</li>
+                </ul>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Content_Section End-->
+
+{% endblock %}

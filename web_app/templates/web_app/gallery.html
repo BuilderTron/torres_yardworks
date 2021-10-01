@@ -1,0 +1,154 @@
+{% extends "web_app/base.html" %}
+{% load static %}
+{% block content %}
+
+
+    <!-- Inner_Heading Start-->
+    <div class="inner_page_bnr">
+      <div class="container">
+        <h2>Gallery</h2>
+      </div>
+    </div>
+    <!-- Inner_Heading End-->
+    <!-- BreadCrumb Start-->
+    <div class="breadcum_bg">
+      <div class="container">
+        <ol class="breadcrumb">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li class="active">Gallery</li>
+        </ol>
+      </div>
+    </div>
+    <!-- BreadCrumb End-->
+    <!-- Content_Section Start-->
+    <div class="pad_84_70 wdt_100">
+      <div class="container">
+        <div class="row">
+          <div class="filter-section">
+            <div class="col-sm-12 col-xs-12">
+              <div class="filter-container isotopeFilters">
+                <ul class="list-inline filter">
+                  <li class="active"><a href="#" data-filter="*">All Gallery</a></li>
+                  <li class="cat-item cat-item-1"><a href="#" data-filter=".garden">Garden</a></li>
+                  <li class="cat-item cat-item-2"><a href="#" data-filter=".pond">Pond</a></li>
+                  <li class="cat-item cat-item-3"><a href="#" data-filter=".patio">Patio</a></li>
+                  <li class="cat-item cat-item-4"><a href="#" data-filter=".rockwall">Rock Wall</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- /nimble-portfolio-filter-->
+          <div class="portfolio-section port-col">
+            <div class="isotopeContainer">
+              <div class="col-sm-4 isotopeSelector garden">
+                <div>
+                  <figure><img src="{% static 'web_app/images/gallery_page/gallery_img1.jpg' %}" alt="image">
+                    <div class="overlay-background">
+                      <div class="inner-overlay">
+                        <div class="inner-overlay-content with-icons"><a data-title="First Image" href="{% static 'web_app/images/gallery_page/gallery_img1.jpg' %}" class="lightbox lens_icon"><i class="fa fa-search"></i></a></div>
+                      </div>
+                    </div>
+                  </figure>
+                </div>
+              </div>
+              <div class="col-sm-4 isotopeSelector pond">
+                <div>
+                  <figure><img src="{% static 'web_app/images/gallery_page/gallery_img2.jpg' %}" alt="image">
+                    <div class="overlay-background">
+                      <div class="inner-overlay">
+                        <div class="inner-overlay-content with-icons"><a data-title="Second Image" href="{% static 'web_app/images/gallery_page/gallery_img2.jpg' %}" class="lightbox lens_icon"><i class="fa fa-search"></i></a></div>
+                      </div>
+                    </div>
+                  </figure>
+                </div>
+              </div>
+              <div class="col-sm-4 isotopeSelector patio">
+                <div>
+                  <figure><img src="{% static 'web_app/images/gallery_page/gallery_img3.jpg' %}" alt="image">
+                    <div class="overlay-background">
+                      <div class="inner-overlay">
+                        <div class="inner-overlay-content with-icons"><a data-title="Third Image" href="{% static 'web_app/images/gallery_page/gallery_img3.jpg' %}" class="lightbox lens_icon"><i class="fa fa-search"></i></a></div>
+                      </div>
+                    </div>
+                  </figure>
+                </div>
+              </div>
+              <div class="col-sm-4 isotopeSelector rockwall">
+                <div>
+                  <figure><img src="{% static 'web_app/images/gallery_page/gallery_img4.jpg' %}" alt="image">
+                    <div class="overlay-background">
+                      <div class="inner-overlay">
+                        <div class="inner-overlay-content with-icons"><a data-title="Fourth Image" href="{% static 'web_app/images/gallery_page/gallery_img4.jpg' %}" class="lightbox lens_icon"><i class="fa fa-search"></i></a></div>
+                      </div>
+                    </div>
+                  </figure>
+                </div>
+              </div>
+              <div class="col-sm-4 isotopeSelector garden">
+                <div>
+                  <figure><img src="{% static 'web_app/images/gallery_page/gallery_img5.jpg' %}" alt="image">
+                    <div class="overlay-background">
+                      <div class="inner-overlay">
+                        <div class="inner-overlay-content with-icons"><a data-title="Fifth Image" href="{% static 'web_app/images/gallery_page/gallery_img5.jpg' %}" class="lightbox lens_icon"><i class="fa fa-search"></i></a></div>
+                      </div>
+                    </div>
+                  </figure>
+                </div>
+              </div>
+              <div class="col-sm-4 isotopeSelector pond">
+                <div>
+                  <figure><img src="{% static 'web_app/images/gallery_page/gallery_img6.jpg' %}" alt="image">
+                    <div class="overlay-background">
+                      <div class="inner-overlay">
+                        <div class="inner-overlay-content with-icons"><a data-title="Six Image" href="{% static 'web_app/images/gallery_page/gallery_img6.jpg' %}" class="lightbox lens_icon"><i class="fa fa-search"></i></a></div>
+                      </div>
+                    </div>
+                  </figure>
+                </div>
+              </div>
+              <div class="col-sm-4 isotopeSelector patio">
+                <div>
+                  <figure><img src="{% static 'web_app/images/gallery_page/gallery_img7.jpg' %}" alt="image">
+                    <div class="overlay-background">
+                      <div class="inner-overlay">
+                        <div class="inner-overlay-content with-icons"><a data-title="Seven Image" href="{% static 'web_app/images/gallery_page/gallery_img7.jpg' %}" class="lightbox lens_icon"><i class="fa fa-search"></i></a></div>
+                      </div>
+                    </div>
+                  </figure>
+                </div>
+              </div>
+              <div class="col-sm-4 isotopeSelector adoption rockwall">
+                <div>
+                  <figure><img src="{% static 'web_app/images/gallery_page/gallery_img8.jpg' %}" alt="image">
+                    <div class="overlay-background">
+                      <div class="inner-overlay">
+                        <div class="inner-overlay-content with-icons"><a data-title="Eight Image" href="{% static 'web_app/images/gallery_page/gallery_img8.jpg' %}" class="lightbox lens_icon"><i class="fa fa-search"></i></a></div>
+                      </div>
+                    </div>
+                  </figure>
+                </div>
+              </div>
+              <div class="col-sm-4 isotopeSelector education garden">
+                <div>
+                  <figure><img src="{% static 'web_app/images/gallery_page/gallery_img9.jpg' %}" alt="image">
+                    <div class="overlay-background">
+                      <div class="inner-overlay">
+                        <div class="inner-overlay-content with-icons"><a data-title="Nine Image" href="{% static 'web_app/images/gallery_page/gallery_img9.jpg' %}" class="lightbox lens_icon"><i class="fa fa-search"></i></a></div>
+                      </div>
+                    </div>
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /nimble-portfolio-->
+        </div>
+      </div>
+    </div>
+    <!-- Content_Section End-->
+    
+
+
+
+    {% endblock %}
+

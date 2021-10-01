@@ -1,0 +1,73 @@
+{% extends "web_app/base.html" %}
+{% load static %}
+{% block content %}
+
+
+<!-- Inner_Heading Start-->
+<div class="inner_page_bnr">
+  <div class="container">
+    <h2>All Services</h2>
+  </div>
+</div>
+<!-- Inner_Heading End-->
+<!-- BreadCrumb Start-->
+<div class="breadcum_bg">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li class="active">All Services</li>
+    </ol>
+  </div>
+</div>
+<!-- BreadCrumb End-->
+<!-- Container Start-->
+<div class="pad_100 wdt_100">
+  <div class="container">
+    <div class="quality-list service-list">
+      <div class="row">
+        <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 service_marbtm"><a href="{% url 'lawn' %}"
+            class="image_hover mbot_38"><img
+              src="{% static 'web_app/images/allservices_page/lawn_gardencare_service.jpg' %}" alt="image"
+              class="zoom_img_effect"></a>
+          <h5>Lawn & Garden Care</h5>
+          <p>Whether you need daily, weekly, or monthly maintenance services, let us help you keep your lawn and
+            flower
+            beds in their best light.
+          </p>
+          <a href="{% url 'lawn' %}" class="view-all hvr-bounce-to-right read_btn">READ MORE</a>
+        </div>
+        <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 service_marbtm"><a href="{% url 'landscape' %}"
+            class="image_hover mbot_38"><img
+              src="{% static 'web_app/images/allservices_page/irrgation_drainage_services.jpg' %}" alt="image"
+              class="zoom_img_effect"></a>
+          <h5>Landscape Design</h5>
+          <p>We specialize in Landscape Design, Artificial Turf, Grass Installation, Tree removal, Drainage
+            Installation, plant installation and more.
+          </p><a href="{% url 'landscape' %}" class="view-all hvr-bounce-to-right read_btn">rEAD MORE</a>
+        </div>
+        <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 service_marbtm"><a href="{% url 'outdoor' %}"
+            class="image_hover mbot_38"><img src="{% static 'web_app/images/allservices_page/stone_hard_service.jpg' %}"
+              alt="image" class="zoom_img_effect"></a>
+          <h5>Exterior Remodel</h5>
+          <p>Decks, Patios, Outdoor Kitchens, Bars, Entertainment Build Outs, Arbors, Gazebos, Pergolas, Fountains,
+            Waterfalls.
+          </p><a href="{% url 'outdoor' %}" class="view-all hvr-bounce-to-right read_btn">rEAD MORE</a>
+        </div>
+        <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 service_marbtm"><a href="{% url 'indoor' %}"
+            class="image_hover mbot_38"><img
+              src="{% static 'web_app/images/allservices_page/planting_removal_service.jpg' %}" alt="image"
+              class="zoom_img_effect"></a>
+          <h5>Indoor Remodel</h5>
+          <p>Remodeling, Renovations, Kitchens, Bathrooms, Additions,
+            ​Construction Build Outs, Floors, Painting, Walls, Ceilings, Cabinets, Countertops.
+          </p><a href="{% url 'indoor' %}" class="view-all hvr-bounce-to-right read_btn">rEAD MORE</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container End-->
+
+
+
+{% endblock %}
