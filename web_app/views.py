@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.core.mail import send_mail
-from .models import HeroSlide, Event
+from .models import HeroSlide, Event, ClientLeads, GalleryUpload, Testimonies
+
 
 
 # Home page.
@@ -9,7 +10,30 @@ from .models import HeroSlide, Event
 def home(request):
     slide = HeroSlide.objects.all()
     event = Event.objects.all()
-    return render(request, 'web_app/index.html', {'slides': slide, 'events': event})
+    testimony = Testimonies.objects.all()
+    if request.method=="POST":
+        first_name = request.POST['name']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        service = request.POST['service']
+        message = request.POST['message']
+        ins = ClientLeads(first_name=first_name,email=email,phone=phone,service=service,message=message)
+        ins.save()
+
+        msg_mail = "Name: " + str(first_name) + "\n\nEmail: " + str(email) + "\n\nPhone: " + str(phone) + "\n\nService: " + str(service) + "\n\nMessage: " + str(message)
+        # Send Email
+        send_mail(
+            'Torres Small Request Form by: ' + first_name,  # subject
+            msg_mail,
+            email,
+            ['torresyardworks@gmail.com'],  # to email
+            fail_silently=False,
+        )
+        print("Data has been written in db.")
+        return render(request, 'web_app/thank_you.html', {'first_name': first_name})
+    else:
+        return render(request, 'web_app/index.html', {'slides': slide, 'events': event, 'testimonys': testimony})
+
 
 
 def about(request):
@@ -37,36 +61,65 @@ def indoor(request):
 
 
 def gallery(request):
-    return render(request, 'web_app/gallery.html', {})
+    photo = GalleryUpload.objects.all()
+    return render(request, 'web_app/gallery.html', {'photos': photo})
 
 
 def contact(request):
-    return render(request, 'web_app/contact.html', {})
+    if request.method=="POST":
+        first_name = request.POST['name']
+        email = request.POST['email']
+        subject = request.POST['subject']
+        message = request.POST['message']
+        ins = ClientLeads(first_name=first_name,email=email,subject=subject,message=message)
+        ins.save()
+
+        msg_mail = "Name: " + str(first_name) + "\n\nEmail: " + str(email) + "\n\nSubject: " + str(subject) + "\n\nMessage: " + str(message)
+        # Send Email
+        send_mail(
+            'Torres Contact Form by: ' + first_name,  # subject
+            msg_mail,
+            email,
+            ['torresyardworks@gmail.com'],  # to email
+            fail_silently=False,
+        )
+        print("Data has been written in db.")
+        return render(request, 'web_app/thank_you.html', {'first_name': first_name})
+    else:
+        return render(request, 'web_app/contact.html', {})
+    
 
 def free_quote(request):
-    return render(request, 'web_app/request_quote.html', {})
+    if request.method=="POST":
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        address = request.POST['address']
+        date = request.POST['date']
+        service = request.POST['service']
+        message = request.POST['message']
+        ins = ClientLeads(first_name=first_name,last_name=last_name,email=email,phone=phone,address=address,date=date,service=service,message=message)
+        ins.save()
 
-# def contact(request):
-#     if request.method == "POST":
-#         your_name = request.POST['your_name']
-#         email = request.POST['email']
-#         message = request.POST['message']
-# # Send Email
-#         send_mail(
-#             'NVP Web: ' + your_name,  # subject
-#             message,  # messasge
-#             email,  # from email
-#             ['nvp20events@gmail.com'],  # to email
-#             fail_silently=False,
-#         )
+        msg_mail = "Name: " + str(first_name) + " " + str(last_name) + "\n\nEmail: " + str(email) + "\n\nPhone: " + str(phone) + "\n\nAddress: " + str(address) + "\n\nDate: " + str(date) + "\n\nService: " + str(service) + "\n\nMessage: " + str(message)
+        # Send Email
+        send_mail(
+            'Torres Request Form by: ' + first_name + " " + last_name,  # subject
+            msg_mail,
+            email,
+            ['torresyardworks@gmail.com'],  # to email
+            fail_silently=False,
+        )
+        print("Data has been written in db.")
+        return render(request, 'web_app/thank_you.html', {'first_name': first_name})
+    else:
+        return render(request, 'web_app/request_quote.html', {})
 
-#         return render(request, 'web_app/contact.html', {'your_name': your_name})
 
-#     else:
-#         return render(request, 'web_app/contact.html', {})
-
+def thank_you(request):
+    return render(request, 'web_app/thank_you.html', {})
 
 # Test page for models and forms
 def test(request):
-
-    return render(request, 'web_app/base.html', {})
+    return render(request, 'web_app/test.html')

@@ -25,10 +25,12 @@
     <div class="wdt_100 pad_94_100">
       <div class="container">
         <h3 class="black-color mar_btm1">Get In <span class="lytgreen-head">Touch</span></h3>
-        <p class="cnt_txt">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolore mque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore veritatis et quasi architecto.</p>
+        <p class="cnt_txt">To learn more about our service capabilities, please contact us today
+          through the form below.</p>
         <div class="row">
           <div class="col-lg-8 col-md-7 col-sm-12 col-xs-12">
-            <form id="contact-form" method="post" action="get_in_touch_form.php">
+            <form id="contact-form" method="post">
+              {% csrf_token %}
               <div class="messages"></div>
               <div class="row">
                 <div class="col-md-12">
@@ -65,19 +67,25 @@
             <div class="contact_info wdt_100">
               <ul>
                 <li class="cnt_map_icon">
-                  <p>Wood Workshop, 562, Mallin<br>                Street, New Youk, NY 100 254</p>
+                  <p>Katy, Texas</p>
                 </li>
-                <li class="cnt_mail_icon">
-                  <p class="cnt_fnt_14">info@landscaping.com<br>                support@landscaping.com</p>
-                </li>
-                <li class="cnt_call_icon">
-                  <p class="cnt_fnt_18">+ 1800 562 2487<br>                + 3215 546 8975</p>
-                </li>
+                <a href="mailto: torresyardworks@gmail.com">
+                  <li class="cnt_mail_icon">
+                    <p class="cnt_fnt_14">torresyardworks@gmail.com</p>
+                  </li>
+                </a>
+                <a href="tel:8329713599">
+                    <li class="cnt_call_icon">
+                      <p class="cnt_fnt_18">(832) 971-3599</p>
+                    </li>
+                </a>
               </ul>
             </div>
           </div>
           <div class="col-lg-12 cnt_map_img">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2381.7399040776495!2d-6.261147484122739!3d53.34791197997939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1						!3m3!3m2!1sen!2sus!4v1462581622087" width="600" height="450" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d186359.76110947158!2d-95.51127943863727!3d29.78290289835027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1633708276296!5m2!1sen!2sus"
+              width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
           </div>
         </div>
       </div>

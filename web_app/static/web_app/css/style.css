@@ -1,23 +1,6 @@
 @charset "utf-8";
 
-/* TABLE OF CONTENTS
-	01-GLOBAL STYLE START
-	02-FAQ STYLE START
-	03-CONTACT US STYLE START
-	04-NEWS PAGE STYLE START
-	05-NEWS PAGE DETAIL STYLE START
-	06-ABOUT US STYLE START
-	07-PROJECT STYLE START
-	08-ALL SERVICES STYLE START
-	09-CART STYLE START
-	10-CHECKOUT STYLE START
-	11-SHOP PAGE STYLE START
-	12-PRODUCT DETAIL PAGE STYLE START
-	13-CARASOUEL STYLE START
-	14-HOMEPAGE VARIATION START
-	15-HEADER FOTTER START
 
-*/
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
@@ -1206,11 +1189,11 @@ a.var5_request_btn {
 }
 
 #minimal-bootstrap-carousel .carousel-inner .slide-1 {
-    background-image: url("../images/home_page/home_slider_img3.jpg");
+    background-image: url("../images/home_page/home_slider_img1.jpg");
 }
 
 #minimal-bootstrap-carousel .carousel-inner .slide-2 {
-    background-image: url("../images/home_page/home_slider_img1.jpg");
+    background-image: url("../images/home_page/home_slider_img2.jpg");
 }
 
 #minimal-bootstrap-carousel .carousel-control {
@@ -3729,7 +3712,7 @@ ul.key_benefit_list li {
     width: 54%;
     font-size: 15px;
     color: #858585;
-    background: url(../images/law_gardner_page/key_benefit_mark_icon.png) no-repeat 0px 4px;
+    background: url(../images/lawn_garden/key_benefit_mark_icon.png) no-repeat 0px 4px;
     padding-left: 30px;
     line-height: 24px;
     margin: 5px 0px;
@@ -5448,7 +5431,7 @@ p.cnt_txt {
 }
 
 .btn.submit_now {
-    background: #a6c644;
+    background: #00A651;
     color: #fff;
     float: left;
     font-size: 16px;
@@ -5484,7 +5467,7 @@ p.cnt_txt {
     list-style: none;
     float: left;
     width: 100%;
-    padding: 10px 0px 10px 70px;
+    padding: 10px 0px 25px 70px;
     margin-bottom: 35px;
 }
 
@@ -5599,7 +5582,7 @@ p.p_mat_btm1 {
     font-size: 34px;
     color: #fff;
     font-style: italic;
-    font-family: 'Alegreya', serif;
+    
     font-weight: 700;
     line-height: 35px;
     float: left;
@@ -7346,6 +7329,7 @@ all and (min-width: 1280px) and (-webkit-transform-3d) {
 
     .contact_info {
         margin: 30px 0px 0px;
+        padding: 5px 0;
     }
 
     .about_chooe_bg {

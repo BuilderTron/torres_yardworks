@@ -29,10 +29,10 @@
               <div class="filter-container isotopeFilters">
                 <ul class="list-inline filter">
                   <li class="active"><a href="#" data-filter="*">All Gallery</a></li>
-                  <li class="cat-item cat-item-1"><a href="#" data-filter=".garden">Garden</a></li>
-                  <li class="cat-item cat-item-2"><a href="#" data-filter=".pond">Pond</a></li>
-                  <li class="cat-item cat-item-3"><a href="#" data-filter=".patio">Patio</a></li>
-                  <li class="cat-item cat-item-4"><a href="#" data-filter=".rockwall">Rock Wall</a></li>
+                  <li class="cat-item cat-item-1"><a href="#" data-filter=".garden">Lawn & Garden Care</a></li>
+                  <li class="cat-item cat-item-2"><a href="#" data-filter=".design">Landscape Design</a></li>
+                  <li class="cat-item cat-item-3"><a href="#" data-filter=".exterior">Exterior Remodel</a></li>
+                  <li class="cat-item cat-item-4"><a href="#" data-filter=".indoor">Indoor Remodel</a></li>
                 </ul>
               </div>
             </div>
@@ -40,18 +40,22 @@
           <!-- /nimble-portfolio-filter-->
           <div class="portfolio-section port-col">
             <div class="isotopeContainer">
-              <div class="col-sm-4 isotopeSelector garden">
+              {% for photo in photos %}
+              <div class="col-sm-4 isotopeSelector {{ photo.category }}">
                 <div>
-                  <figure><img src="{% static 'web_app/images/gallery_page/gallery_img1.jpg' %}" alt="image">
-                    <div class="overlay-background">
+                  <figure><img src="{{ photo.image }}" alt="image" data-title="{{ photo.title }}" loading="lazy">
+                    <!-- <div class="overlay-background">
                       <div class="inner-overlay">
-                        <div class="inner-overlay-content with-icons"><a data-title="First Image" href="{% static 'web_app/images/gallery_page/gallery_img1.jpg' %}" class="lightbox lens_icon"><i class="fa fa-search"></i></a></div>
+                        <div class="inner-overlay-content with-icons"><a data-title="{{ photo.title }}" href="{{ photo.image }}" class="lightbox lens_icon"><i class="fa fa-search"></i></a></div>
                       </div>
-                    </div>
+                    </div> -->
                   </figure>
                 </div>
               </div>
-              <div class="col-sm-4 isotopeSelector pond">
+              {% endfor %}
+
+
+              <!-- <div class="col-sm-4 isotopeSelector design">
                 <div>
                   <figure><img src="{% static 'web_app/images/gallery_page/gallery_img2.jpg' %}" alt="image">
                     <div class="overlay-background">
@@ -62,7 +66,7 @@
                   </figure>
                 </div>
               </div>
-              <div class="col-sm-4 isotopeSelector patio">
+              <div class="col-sm-4 isotopeSelector exterior">
                 <div>
                   <figure><img src="{% static 'web_app/images/gallery_page/gallery_img3.jpg' %}" alt="image">
                     <div class="overlay-background">
@@ -73,7 +77,7 @@
                   </figure>
                 </div>
               </div>
-              <div class="col-sm-4 isotopeSelector rockwall">
+              <div class="col-sm-4 isotopeSelector indoor">
                 <div>
                   <figure><img src="{% static 'web_app/images/gallery_page/gallery_img4.jpg' %}" alt="image">
                     <div class="overlay-background">
@@ -95,7 +99,7 @@
                   </figure>
                 </div>
               </div>
-              <div class="col-sm-4 isotopeSelector pond">
+              <div class="col-sm-4 isotopeSelector design">
                 <div>
                   <figure><img src="{% static 'web_app/images/gallery_page/gallery_img6.jpg' %}" alt="image">
                     <div class="overlay-background">
@@ -106,7 +110,7 @@
                   </figure>
                 </div>
               </div>
-              <div class="col-sm-4 isotopeSelector patio">
+              <div class="col-sm-4 isotopeSelector exterior">
                 <div>
                   <figure><img src="{% static 'web_app/images/gallery_page/gallery_img7.jpg' %}" alt="image">
                     <div class="overlay-background">
@@ -117,7 +121,7 @@
                   </figure>
                 </div>
               </div>
-              <div class="col-sm-4 isotopeSelector adoption rockwall">
+              <div class="col-sm-4 isotopeSelector adoption indoor">
                 <div>
                   <figure><img src="{% static 'web_app/images/gallery_page/gallery_img8.jpg' %}" alt="image">
                     <div class="overlay-background">
@@ -138,7 +142,9 @@
                     </div>
                   </figure>
                 </div>
-              </div>
+              </div> -->
+
+
             </div>
           </div>
           <!-- /nimble-portfolio-->

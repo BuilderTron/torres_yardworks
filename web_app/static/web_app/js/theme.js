@@ -3,7 +3,7 @@
 function bootstrapAnimatedLayer() {
     /* Demo Scripts for Bootstrap Carousel and Animate.css article
 
-       */
+         */
 
     //Function to animate slider captions
     function doAnimations(elems) {

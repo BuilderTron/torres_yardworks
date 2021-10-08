@@ -18,6 +18,8 @@ urlpatterns = [
     
     path('free_quote', views.free_quote, name="free_quote"),
 
-    # path('test', views.test, name="test"),
+    path('thank_you', views.thank_you, name="thank_you"),
+
+    path('test', views.test, name="test"),
 
 ]

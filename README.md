@@ -1,7 +1,7 @@
 # Torres Contractors Website 2021
 **Version 2**
 
-This is Torres Yardworks & Contractors website managed by
+This is Torres Yardworks website managed by
 Jose J. Lopez.
 
 ---
@@ -16,9 +16,9 @@ Jose J. Lopez.
 
 ## License & copyright
 
-Copyright (c) [2021] [Torres Yardworks & Contractors]
+Copyright (c) [2021] [Torres Yardworks]
 
 ---
 
 ## Link
-[torresyardworkscontractors.com]()
+[torresyardworks.com]()

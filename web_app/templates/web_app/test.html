@@ -1,0 +1,12 @@
+{% extends "web_app/base.html" %}
+{% load static %}
+{% block content %}
+<h1>Test Form</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    {{customer_form}}
+    <input type="submit">
+</form>
+
+
+{% endblock %}
