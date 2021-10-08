@@ -1,0 +1,83 @@
+{% extends "web_app/base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+    <!-- Inner_Heading Start-->
+    <div class="inner_page_bnr">
+      <div class="container">
+        <h2>Exterior Remodel</h2>
+      </div>
+    </div>
+    <!-- Inner_Heading End-->
+    <!-- BreadCrumb Start-->
+    <div class="breadcum_bg">
+      <div class="container">
+        <ol class="breadcrumb">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li class="active">Exterior Remodel</li>
+        </ol>
+      </div>
+    </div>
+    <!-- BreadCrumb End-->
+    <!-- Content_Section Start-->
+    <div class="wdt_100 pad_100">
+      <div class="container service_page">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-12 wdt_left">
+            <ul class="service_nav">
+              <li><a href="{% url 'services' %}">All Services</a></li>
+              <li><a href="{% url 'lawn' %}">Lawn & Garden Care</a></li>
+              <li><a href="{% url 'landscape' %}">Landscape Design</a></li>
+              <li><a href="{% url 'outdoor' %}" class="service_nav_active">Exterior Remodel</a></li>
+              <li><a href="{% url 'indoor' %}">Indoor Remodel</a></li>
+            </ul>
+            <div class="howwehelp_col">
+              <h4>How can we help you?</h4>
+              <p>
+                Contact with us through our
+                representative or submit a
+                business inquiry online.
+              </p><a href="{% url 'contact' %}" class="contact_btn">Contact Us >> </a>
+            </div>
+            <!-- <div class="download_brochure_Col">
+              <h5>Download Our latest <span>Company Brochure</span> from here</h5><a href="#" class="btn download_btn">download</a>
+            </div> -->
+          </div>
+          <div class="col-lg-8 col-md-8 col-sm-8 wdt_rght">
+            <ul class="law_service_img">
+              <li><span class="image_hover"><img src="{% static 'web_app/images/exterior/top1.jpg' %}" alt="image" class="zoom_img_effect"></span></li>
+              <li class="second_img"><span class="image_hover"><img src="{% static 'web_app/images/exterior/top2.jpg' %}" alt="image" class="zoom_img_effect"></span></li>
+            </ul>
+            <h4 class="fnt28">Exterior Construction & Maintenance</h4>
+            <p>Our highly trained staff have experience providing an array of additional services and
+              top-quality customer service. If you have an idea for a project, we will work with you to make it a
+              reality from the ground up. We are able to assist with the design of your project, then build it to your
+              exact specifications.</p>
+            <p>Whether you need a simple touch up or a whole demolition and reconstruction, you can count on us to fulfill your custom needs.
+            </p>
+            <div class="key_benefit_col">
+              <div class="key_benefit_img"><span class="image_hover"><img src="{% static 'web_app/images/exterior/washing.jpg' %}" alt="image" class="zoom_img_effect"></span></div>
+              <div class="key_benefit_desc">
+                <h4 class="fnt28 mar_btm">Exterior Home Improvements</h4>
+                <p>We transform outdoor spaces by customizing the spaces depending on your needs.</p>
+                <ul class="key_benefit_list">
+                  <li>Artificial Turf Installation</li>
+                  <li class="wdt_40">Brickwork</li>
+                  <li>Driveway Construction</li>
+                  <li class="wdt_40">New Roofing & Repair</li>
+                  <li>Pressure Washing</li>
+                  <li class="wdt_40">Fence Installation & Repair</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Content_Section End-->
+
+
+
+{% endblock %}

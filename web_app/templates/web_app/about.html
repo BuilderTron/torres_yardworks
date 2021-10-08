@@ -1,0 +1,118 @@
+{% extends "web_app/base.html" %}
+{% load static %}
+{% block content %}
+
+
+<!-- Inner_Heading Start-->
+<div class="inner_page_bnr">
+  <div class="container">
+    <h2>About Us</h2>
+  </div>
+</div>
+<!-- Inner_Heading End-->
+<!-- BreadCrumb Start-->
+<div class="breadcum_bg">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li class="active">About Us</li>
+    </ol>
+  </div>
+</div>
+<!-- BreadCrumb End-->
+<!-- History_Section Start-->
+<div class="wdt_100 pad_100">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-4"><img src="{% static 'web_app/images/aboutus_page/about_img.jpg' %}" alt="image"></div>
+      <div class="col-lg-8 col-md-8 col-sm-8 about_desc">
+        <h3 class="black-color mar_btm30">Our <span class="lytgreen-head">History</span></h3>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolore mque laudantium, totam rem
+          aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dict eaque ipsa quae ab
+          illo inventore veritatis et quasi architecto. sit voluptatem accusantium dolore mque laudantium, totam rem
+          aperiam, eaque ipsa quae ab illo</p>
+        <p class="black_txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididuntut
+          labore et dolore magna aliqua.</p>
+        <h4>We Provide All Solutions under one Roof</h4><span class="friendly_customer_Txt">Friendly customer service
+          staff for your all questions!</span><a href="{% url 'services' %}"
+          class="view-all hvr-bounce-to-right slide_contact_btn slide_service_btn mar_lft_zero">OUr Services</a><a
+          href="{% url 'contact' %}" class="view-all hvr-bounce-to-right slide_contact_btn service_mar_left">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- History_Section End-->
+<!-- WhyChoose_Us Start-->
+<div class="about_chooe_bg wdt_100">
+  <div class="container">
+    <h3 class="black-color mar_btm50">Why <span class="lytgreen-head">Choose Us</span></h3>
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 choose_list_div">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 choose_list_56 list_pad_left">
+          <div class="choose_list_icon chooselist_lyt-green"><img src="{% static 'web_app/images/home_page/service.png' %}" alt="image">
+          </div>
+          <div class="choose_list_info">
+            <h5>Excellent Service</h5>
+            <p>
+              We bring solutions to homeowners and businesses to keep their landscapes in top
+              condition.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 choose_list_56 list_pad_rght">
+          <div class="choose_list_icon chooselist_lyt-green"><img src="{% static 'web_app/images/home_page/clean.png' %}" alt="image">
+          </div>
+          <div class="choose_list_info">
+            <h5>Clean Working</h5>
+            <p>
+              Our priority is to deliver high quality, cost-effective services and 100% satisfaction to our customers.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 choose_list list_pad_left">
+          <div class="choose_list_icon chooselist_lyt-green"><img src="{% static 'web_app/images/home_page/quality.png' %}" alt="image">
+          </div>
+          <div class="choose_list_info">
+            <h5>Quality And Reliability</h5>
+            <p>
+              A professionally trained team with special attention to safety and customer relations will take care of
+              any customer needs.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 choose_list list_pad_rght">
+          <div class="choose_list_icon chooselist_lyt-green"><img src="{% static 'web_app/images/home_page/response.png' %}" alt="image">
+          </div>
+          <div class="choose_list_info">
+            <h5>Fast Response</h5>
+            <p>
+              Whether it's an emergency or just simply a quote is needed, count on our team to respond quickly.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class="choose_img"><img src="{% static 'web_app/images/aboutus_page/crew.jpg' %}" alt="image"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- WhyChoose_Us End-->
+
+<!-- Expertise_Section Start-->
+<div class="pad_85_95 wdt_100">
+  <div class="container">
+    <h3 class="black-color mar_btm23">20 Years of Expertise in <span class="lytgreen-head">Gardening & Landscaping</span>
+    </h3>
+    <p class="black_txt mar_btm10"> Providing service to the greater Houston area.</p>
+    <p>Whether you require design & installation of a brand new landscape project including irrigation, drainage, water
+      features & fountains or are looking for quality lawn maintenance, Torres Yardworks can make it
+      happen.
+    </p>
+  </div>
+</div>
+<!-- Expertise_Section End-->
+
+
+
+{% endblock %}

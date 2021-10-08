@@ -1,0 +1,88 @@
+{% extends "web_app/base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+    <!-- Inner_Heading Start-->
+    <div class="inner_page_bnr">
+      <div class="container">
+        <h2>Indoor Remodel</h2>
+      </div>
+    </div>
+    <!-- Inner_Heading End-->
+    <!-- BreadCrumb Start-->
+    <div class="breadcum_bg">
+      <div class="container">
+        <ol class="breadcrumb">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li class="active">Indoor Remodel</li>
+        </ol>
+      </div>
+    </div>
+    <!-- BreadCrumb End-->
+    <!-- Content_Section Start-->
+    <div class="wdt_100 pad_100">
+      <div class="container service_page">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-12 wdt_left">
+            <ul class="service_nav">
+              <li><a href="{% url 'services' %}">All Services</a></li>
+              <li><a href="{% url 'lawn' %}">Lawn & Garden Care</a></li>
+              <li><a href="{% url 'landscape' %}">Landscape Design</a></li>
+              <li><a href="{% url 'outdoor' %}">Exterior Remodel</a></li>
+              <li><a href="{% url 'indoor' %}" class="service_nav_active">Indoor Remodel</a></li>
+            </ul>
+            <div class="howwehelp_col">
+              <h4>How can we help you?</h4>
+              <p>
+                Contact with us through our
+                representative or submit a
+                business inquiry online.
+              </p><a href="{% url 'contact' %}" class="contact_btn">Contact Us >> </a>
+            </div>
+            <!-- <div class="download_brochure_Col">
+              <h5>Download Our latest <span>Company Brochure</span> from here</h5><a href="#" class="btn download_btn">download</a>
+            </div> -->
+          </div>
+          <div class="col-lg-8 col-md-8 col-sm-8 wdt_rght">
+            <ul class="law_service_img">
+              <li class="first_img_wdt"><span class="image_hover"><img src="{% static 'web_app/images/indoor/top.jpg' %}" alt="image" class="zoom_img_effect"></span></li>
+            </ul>
+            <h4 class="fnt28">Interior Remodel</h4>
+            <p>Whether you are looking into a full-scale kitchen remodel, master bath remodel, whole home remodel, or
+              just a few minor upgrades, Torres Yardworks is here to help! </p>
+            <p>We work with leading brand names to deliver high-quality solutions built for the unique needs of Texan
+              homes.</p>
+            <div class="key_benefit_col">
+              <div class="key_benefit_desc key_fl">
+                <h4 class="fnt28 mar_btm">Indoor Service</h4>
+                <p> We can design, build and decorate any interior to emulate your personal style.</p>
+                <ul class="key_benefit_list">
+                  <li>Kitchen Remodeling</li>
+                  <li class="wdt_40">Counter Tops</li>
+                  <li>Back Splash</li>
+                  <li class="wdt_40">Bathroom Remodeling</li>
+                  <li>Door & Windows</li>
+                  <li class="wdt_40">Cabinets</li>
+                  <li>Ceramic Tile</li>
+                  <li class="wdt_40">Flooring</li>
+                  <li>Closets</li>
+                  <li class="wdt_40">Wall Building</li>
+                  <li>Wall Repair</li>
+                  <li class="wdt_40">Wall and Furniture Paint</li>
+                  <li>Electrical Install & Repair</li>
+                  <li class="wdt_40">Plumbing Install & Repair</li>
+                </ul>
+              </div>
+              <div class="key_benefit_img key_fr_img"><span class="image_hover"><img src="{% static 'web_app/images/indoor/bathroom.jpg' %}" alt="image" class="zoom_img_effect"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Content_Section End-->
+
+
+
+{% endblock %}

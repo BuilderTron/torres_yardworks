@@ -1,0 +1,124 @@
+{% extends "web_app/base.html" %}
+{% load static %}
+{% block content %}
+
+
+    <!-- Inner_Heading Start-->
+    <div class="inner_page_bnr">
+      <div class="container">
+        <h2>Request a Free Estimate</h2>
+      </div>
+    </div>
+    <!-- Inner_Heading End-->
+    <!-- BreadCrumb Start-->
+    <div class="breadcum_bg">
+      <div class="container">
+        <ol class="breadcrumb">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li class="active">Request a Free Estimate</li>
+        </ol>
+      </div>
+    </div>
+    <!-- BreadCrumb End-->
+    <!-- Content_Section Start-->
+    <div class="pad_94_100 wdt_100">
+      <div class="container">
+        <h3 class="black-color mar_btm18">Request a <span class="lytgreen-head">Free Estimate</span></h3>
+        <div class="row">
+          <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <p class="p_mat_btm1">We would be delighted to serve you with our services, just use the form below or
+              choose the services you are interested in and we will be in touch with you in few hours. 
+              <br>
+              </p>
+            <form id="contact-form" method="post">
+              {% csrf_token %}
+              <div class="messages"></div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input id="name_req" type="text" name="first_name" value="First Name" onblur="if(value=='') value = 'First Name'" onfocus="if(value=='First Name') value = ''" class="form-control quick_form_control">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input id="email_req" type="text" name="last_name" value="Last Name" onblur="if(value=='') value = 'Last Name'" onfocus="if(value=='Last Name') value = ''" class="form-control quick_form_control">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input id="phone_req" type="email" name="email" value="Email" onblur="if(value=='') value = 'Email'" onfocus="if(value=='Email') value = ''" class="form-control quick_form_control">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input id="address_req" type="tel" name="phone" value="Phone Number"
+                      onblur="if(value=='') value = 'Phone Number'" onfocus="if(value=='Phone Number') value
+                      = ''"
+                      class="form-control quick_form_control">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input id="date_service" type="text" name="address" value="Address" onblur="if(value=='') value = 'Address'" onfocus="if(value=='Address') value = ''" class="form-control quick_form_control">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input id="service_time" type="date" name="date" value=""  class="form-control quick_form_control">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <select name="service" data-bv-field="state" class="form-control quick_form_control selectpicker">
+                      <option value=" " selected>Choose services (required)</option>
+                      <option value="Lawn & Garden Care">Lawn & Garden Care</option>
+                      <option value="Landscape Design">Landscape Design</option>
+                      <option value="Exterior Remodel">Exterior Remodel</option>
+                      <option value="Indoor Remodel">Indoor Remodel</option>
+                      
+                    </select>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <textarea id="message_req" name="message" placeholder="Message" rows="4" class="form-control quick_form_control form_message he_224"></textarea>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <input type="submit" value="submit now" class="btn submit_now">
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="working_hours_col">
+              <h3 class="black-color">Working <span class="green-head">Hours</span></h3>
+              <p>Monday - Friday: 08:00AM - 5:00PM<br>            Saturday & Sunday: CLOSED</p>
+            </div>
+            <div class="query_Col">
+              <h3>Have a Question?</h3><img src="{% static 'web_app/images/request_quote_page/call.jpg' %}" alt="image">
+              <p>Feel free to ask any landscaping or gardening questions over the phone.</p> <a href="tel:8329713599"><span class="query_phnno"> (832) 971-3599</span> </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Content_Section End-->
+
+{% endblock %}

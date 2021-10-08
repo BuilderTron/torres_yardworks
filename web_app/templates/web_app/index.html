@@ -1,0 +1,372 @@
+{% extends "web_app/base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- BannerCol Start-->
+<div id="minimal-bootstrap-carousel" data-ride="carousel" class="carousel slide carousel-fade shop-slider">
+  <!-- Wrapper for slides-->
+  <div role="listbox" class="carousel-inner">
+    <div class="item active slide-1">
+      <div class="carousel-caption">
+        <div class="thm-container">
+          <div class="box valign-top home1_slide1">
+            <div class="content text-left cnt_fr wdt55">
+              <h2 data-animation="animated fadeInUp">
+                COMPLETE LANDSCAPE SERVICE AND MAINTENANCE
+              </h2>
+              <p data-animation="animated fadeInDown">
+                We can turn your front and backyard into a beautiful haven that
+                you can be proud of. If you or someone you know needs
+                landscaping service, contact us today for a free estimate.
+              </p>
+              <a data-animation="animated fadeInUp" href="{% url 'contact' %}" data-text="Contact Us"
+                class="button button--winona button--inverted"><span>Contact Us</span></a><a
+                data-animation="animated fadeInUp" href="{% url 'services' %}" data-text="OUr Services"
+                class="button button--winona button--inverted2"><span>Our Services</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item slide-2">
+      <div class="carousel-caption">
+        <div class="thm-container">
+          <div class="box valign-top home1_slide2">
+            <div class="content text-left cnt_fl wdt55">
+              <h2 data-animation="animated fadeInUp">
+                Indoor & Outdoor <br />
+                Home remodel & Repair
+              </h2>
+              <p data-animation="animated fadeInDown">
+                Providing indoor home remodel & outdoor landscape design to the greater Houston area for 20 Years.
+                Contact Us Today to let us keep your home looking fresh.
+              </p>
+              <a data-animation="animated fadeInUp" href="{% url 'contact' %}" data-text="Contact Us"
+                class="button button--winona button--inverted"><span>Contact Us</span></a><a
+                data-animation="animated fadeInUp" href="{% url 'services' %}" data-text="OUr Services"
+                class="button button--winona button--inverted2"><span>Our Services</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Controls--><a href="#minimal-bootstrap-carousel" role="button" data-slide="prev" class="left carousel-control"><i
+      class="fa fa-angle-left"></i><span class="sr-only">Previous</span></a><a href="#minimal-bootstrap-carousel"
+    role="button" data-slide="next" class="right carousel-control"><i class="fa fa-angle-right"></i><span
+      class="sr-only">Next</span></a>
+</div>
+<!-- BannerCol End-->
+<!-- Quality_Section Start-->
+<div class="wdt_100 pad_85_100">
+  <div class="container">
+    <div class="year_quality">
+      <span class="year_20">20</span> Years of Quality Service in
+      <span class="landscanp_color">Landscaping</span>
+    </div>
+    <div class="quality-txt">
+      <p>
+        To have your lawn look its best, trust Torres Yardworks. to
+        get the job done right. We take a great deal of pride in the quality of
+        our work. we understand what complete customer satisfaction means.
+      </p>
+    </div>
+    <div class="quality-list">
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 quality-list_marbtm">
+          <a href="{% url 'lawn' %}" class="image_hover mbot_38"><img
+              src="{% static 'web_app/images/home_page/maintenance.jpg' %}" alt="image" class="zoom_img_effect" /></a>
+          <h5><a href="{% url 'lawn' %}">Lawn & Garden Care</a></h5>
+          <p>
+            Whether you need daily, weekly, or monthly maintenance services, let us help you keep your lawn and flower
+            beds in their best light.
+          </p>
+          <a href="{% url 'lawn' %}" class="view-all hvr-bounce-to-right read_btn">READ MORE</a>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 quality-list_marbtm">
+          <a href="{% url 'landscape' %}" class="image_hover mbot_38"><img
+              src="{% static 'web_app/images/home_page/landscape.jpg' %}" alt="image" class="zoom_img_effect" /></a>
+          <h5><a href="{% url 'landscape' %}">Landscape Design</a></h5>
+          <p>
+            We specialize in Landscape Design, Artificial Turf, Grass Installation, Tree removal, Drainage Installation, plant installation and more.
+          </p>
+          <a href="{% url 'landscape' %}" class="view-all hvr-bounce-to-right read_btn">rEAD MORE</a>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 quality-list_marbtm">
+          <a href="{% url 'outdoor' %}" class="image_hover mbot_38"><img
+              src="{% static 'web_app/images/home_page/exterior.jpg' %}" alt="image"
+              class="zoom_img_effect" /></a>
+          <h5><a href="{% url 'outdoor' %}">Exterior Remodel</a></h5>
+          <p>
+            Decks, Patios, Outdoor Kitchens, Bars, Entertainment Build Outs, Arbors, Gazebos, Pergolas, Fountains,
+            Waterfalls.
+          </p>
+          <a href="{% url 'outdoor' %}" class="view-all hvr-bounce-to-right read_btn">rEAD MORE</a>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 quality-list_marbtm">
+          <a href="{% url 'indoor' %}" class="image_hover mbot_38"><img
+              src="{% static 'web_app/images/home_page/indoor.jpg' %}" alt="image"
+              class="zoom_img_effect" /></a>
+          <h5><a href="{% url 'indoor' %}">Indoor Remodel</a></h5>
+          <p>
+            Remodeling, Renovations, Kitchens, Bathrooms, Additions,
+            ​Construction Build Outs, Floors, Painting, Walls, Ceilings, Cabinets, Countertops.
+          </p>
+          <a href="{% url 'indoor' %}" class="view-all hvr-bounce-to-right read_btn">rEAD MORE</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Quality_Section End-->
+
+<!-- Our_Mission Start-->
+<div class="pad_100_97 why_choose_col wdt_100">
+  <div class="container">
+    <div class="row">
+      <div class="
+          col-lg-4 col-md-4 col-sm-12 col-xs-12
+          short_about_col
+          why_choose_Txt
+        ">
+        <h3 class="black-color mar_btm30">
+          Our Commitment<span class="green-head"> To You</span>
+        </h3>
+        <p class="black_txt fnt_20">
+          No matter what your needs or visions might be, you can expect our team to bring you the solutions you expect.
+        </p>
+        <p>
+          We will treat your landscape with proper care as if it was our own to ensure your satisfaction.
+        </p>
+      </div>
+      <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 choose_list list_pad_left">
+          <div class="choose_list_icon">
+            <img src="{% static 'web_app/images/home_page/service.png' %}" alt="image" />
+          </div>
+          <div class="choose_list_info">
+            <h5>Excellent Service</h5>
+            <p>
+              We bring solutions to homeowners and businesses to keep their landscapes in top
+              condition.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 choose_list list_pad_rght">
+          <div class="choose_list_icon">
+            <img src="{% static 'web_app/images/home_page/clean.png' %}" alt="image" />
+          </div>
+          <div class="choose_list_info">
+            <h5>Clean Working</h5>
+            <p>
+              Our priority is to deliver high quality, cost-effective services and 100% satisfaction to our customers.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 choose_list list_pad_left">
+          <div class="choose_list_icon">
+            <img src="{% static 'web_app/images/home_page/quality.png' %}" alt="image" />
+          </div>
+          <div class="choose_list_info">
+            <h5>Quality And Reliability</h5>
+            <p>
+              A professionally trained team with special attention to safety and customer relations will take care of any customer needs.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 choose_list list_pad_rght">
+          <div class="choose_list_icon">
+            <img src="{% static 'web_app/images/home_page/response.png' %}" alt="image" />
+          </div>
+          <div class="choose_list_info">
+            <h5>Fast Response</h5>
+            <p>
+              Whether it's an emergency or just simply a quote is needed, count on our team to respond quickly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Our_Mission End-->
+
+<!-- About_Us Start-->
+<div class="pad_94_100 wdt_100 home_about_col">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 short_about_col">
+        <h3 class="black-color">
+          Free Estimates Available <br><span class="green-head">Let's Work Together</span>
+        </h3>
+        <p class="black_txt">
+          Make your landscape a beautiful getaway by working with <br>
+          experts at Torres Yardworks!
+        </p>
+        <p class="margin_20">
+          From taking care of your lawn to creating a new patio, you can <br>
+          count on us to keep your outside space in top shape at all times.
+        </p>
+        <div class="col-lg-4 col-md-12 col-sm-6 col-xs-12 no_pad_left">
+          <ul class="about_list">
+            <li><a href="{% url 'lawn' %}">Lawn & Garden Care</a></li>
+            <li><a href="{% url 'landscape' %}">Landscape Design</a></li>
+
+          </ul>
+        </div>
+        <div class="col-lg-5 col-md-12 col-sm-6 col-xs-12">
+          <ul class="about_list">
+            <li><a href="{% url 'outdoor' %}">Outdoor Remodel</a></li>
+            <li><a href="{% url 'indoor' %}">Indoor Remodel</a></li>
+
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 request_col">
+        <div class="request_col_inn">
+          <h3>FREE ESTIMATE</h3>
+          <form id="contact-form" method="post">
+            {% csrf_token %}
+            <div class="messages"></div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group request_Form_group">
+                  <input id="form_name" type="text" name="name" value="Name" onblur="if(value=='') value = 'Name'"
+                    onfocus="if(value=='Name') value = ''" class="form-control request_form_input" />
+                  <div class="help-block with-errors"></div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group request_Form_group">
+                  <input id="form_lastname" type="email" name="email" value="Email"
+                    onblur="if(value=='') value = 'Email'" onfocus="if(value=='Email') value = ''"
+                    class="form-control request_form_input" />
+                  <div class="help-block with-errors"></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group request_Form_group">
+                  <input id="form_email" type="tel" name="phone" value="Phone Number"
+                    onblur="if(value=='') value = 'Phone Number'" onfocus="if(value=='Phone Number') value = ''"
+                    class="form-control request_form_input" />
+                  <div class="help-block with-errors"></div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group request_Form_group">
+                  <select name="service" data-bv-field="state" class="form-control request_form_input selectpicker">
+                    <option value=" " selected>Choose services</option>
+                    <option value="Lawn & Garden Care">Lawn & Garden Care</option>
+                    <option value="Landscape Design">Landscape Design</option>
+                    <option value="Exterior Remodel">Exterior Remodel</option>
+                    <option value="Indoor Remodel">Indoor Remodel</option>
+                  </select>
+                  <div class="help-block with-errors"></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group request_Form_group">
+                  <textarea id="form_message" name="message" placeholder="Message" rows="4"
+                    class="form-control request_form_input height_141"></textarea>
+                  <div class="help-block with-errors"></div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <input type="submit" value="Send" class="btn send_btn" />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- About_Us End-->
+
+<!-- Stop_Location Start-->
+<div class="stop_location_col wdt_100 text-center">
+  <div class="container">
+    <h3>
+      We are your one stop location for all of your outdoor needs,for both
+      residential and commercial properties.
+    </h3>
+    <div class="stop_buttons">
+      <a href="{% url 'services' %}" class="
+          view-all
+          hvr-bounce-to-right
+          slide_contact_btn slide_service_btn
+          flnone
+          margin_rght
+        ">OUr Services</a>
+      <a href="{% url 'contact' %}" class="view-all hvr-bounce-to-right slide_contact_btn flnone">Contact
+        Us</a>
+    </div>
+  </div>
+</div>
+<!-- Stop_Location End-->
+<!-- Client_Testimonial Start-->
+<div class="pad_94_100 client_bg wdt_100">
+  <div class="container">
+    <h3 class="black-color mar_btm40">
+      What Our <span class="lytgreen-head">Clients Say</span>
+    </h3>
+    <div id="client_slider" data-ride="carousel" class="carousel slide two_shows_one_move">
+      <div class="controls pull-right">
+        <a href="#client_slider" data-slide="prev" class="left fa fa-chevron-left"></a><a href="#client_slider"
+          data-slide="next" class="right fa fa-chevron-right"></a>
+      </div>
+      <div class="row">
+        <div class="carousel-inner">
+          <div class="item active">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+              <div class="white_client_txt">
+                <p>
+                  I now have an amazing outdoor living space that is better than I could have ever imagined. I
+                  appreciate the way Mr. Torres took into account my lifestyle, taste, and the existing plants that I
+                  already had into his design. My yard looks more and more amazing each day. I can’t wait to see it in
+                  the spring.
+                </p>
+              </div>
+              <div class="client_identity_Col">
+                <span class="client_image"><img src="{% static 'web_app/images/home_page/Jose.png' %}"
+                    alt="image" /></span>
+                <div class="client_desc">
+                  <span class="client_name">Jose Lopez</span><br><span class="client_place">Katy, TX</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          {% for testimony in testimonys %}
+          <div class="item">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+              <div class="white_client_txt">
+                <p>
+                  {{ testimony.testimony }}
+                </p>
+              </div>
+              <div class="client_identity_Col">
+                <span class="client_image"><img src="{{ testimony.profile }}"
+                    alt="image" /></span>
+                <div class="client_desc">
+                  <span class="client_name">{{ testimony.name }}</span><br><span class="client_place">{{ testimony.location }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Client_Testimonial End-->
+
+
+
+{% endblock %}

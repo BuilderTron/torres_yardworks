@@ -1,0 +1,51 @@
+{% extends "web_app/base.html" %} 
+{% load static %} 
+{% block content %}
+
+<!-- Inner_Heading Start-->
+<!-- <div class="inner_page_bnr">
+    <div class="container">
+        <h2>Contact Us</h2>
+    </div>
+</div> -->
+<!-- Inner_Heading End-->
+<!-- BreadCrumb Start-->
+<!-- <div class="breadcum_bg">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li class="active">Thank You</li>
+        </ol>
+    </div>
+</div> -->
+<!-- BreadCrumb End-->
+<!-- Content_Section Start-->
+<div class="wdt_100 pad_94_100">
+    <div class="container">
+        <h3 class="black-color mar_btm1">
+            Thank you for contacting us <span class="lytgreen-head">{{first_name}}!</span>
+        </h3>
+        <p class="cnt_txt">
+            We have received your message. We will contact you as soon as possible!
+        </p>
+        <div class="row">
+            <div class="col-lg-8 col-md-7 col-sm-12 col-xs-12"></div>
+        </div>
+    </div>
+    <!-- Stop_Location Start-->
+    <div class="stop_location_col wdt_100 text-center">
+        <div class="container">
+            <h3>
+                We hope you're having a great day! <br>In the meantime, check out our Gallery of projects.
+            </h3>
+            <div class="stop_buttons">
+                <a href="{% url 'home' %}" class="view-all hvr-bounce-to-right slide_contact_btn slide_service_btn flnone margin_rght">Home</a>
+                <a href="{% url 'gallery' %}" class="view-all hvr-bounce-to-right slide_contact_btn flnone">Gallery</a>
+            </div>
+        </div>
+    </div>
+    <!-- Stop_Location End-->
+</div>
+<!-- Content_Section End-->
+
+{% endblock %}
