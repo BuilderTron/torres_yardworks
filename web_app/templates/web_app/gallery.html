@@ -43,10 +43,10 @@
               {% for photo in photos %}
               <div class="col-sm-4 isotopeSelector {{ photo.category }}">
                 <div>
-                  <figure><img src="{{ photo.image }}" alt="image" data-title="{{ photo.title }}" loading="lazy">
+                  <figure><img src="{{ photo.image.url }}" alt="image" data-title="{{ photo.title }}" >
                     <!-- <div class="overlay-background">
                       <div class="inner-overlay">
-                        <div class="inner-overlay-content with-icons"><a data-title="{{ photo.title }}" href="{{ photo.image }}" class="lightbox lens_icon"><i class="fa fa-search"></i></a></div>
+                        <div class="inner-overlay-content with-icons"><a data-title="{{ photo.title }}" href="{{ photo.image.url }}" class="lightbox lens_icon"><i class="fa fa-search"></i></a></div>
                       </div>
                     </div> -->
                   </figure>
@@ -152,7 +152,7 @@
       </div>
     </div>
     <!-- Content_Section End-->
-    
+
 
 
 
