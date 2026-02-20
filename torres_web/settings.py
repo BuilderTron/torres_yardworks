@@ -20,8 +20,10 @@ env = environ.Env(
     DEBUG=(bool, False)
 )
 
-# reading .env file
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+# reading .env file (optional — in production, env vars come from Docker env_file)
+env_file = os.path.join(BASE_DIR, '.env')
+if os.path.isfile(env_file):
+    environ.Env.read_env(env_file)
 
 
 # Quick-start development settings - unsuitable for production
@@ -151,7 +153,7 @@ SECURE_HSTS_PRELOAD = env.bool('SECURE_HSTS_PRELOAD', default=False)
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = Path(env('STATIC_ROOT', default=str(BASE_DIR / 'static')))
 
 # Base url to serve media files
 MEDIA_URL = '/media/'

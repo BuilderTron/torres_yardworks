@@ -27,9 +27,10 @@ COPY . /app
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen --no-dev --python=${PYTHON_VERSION}
 
-# Collect static files (uses a dummy SECRET_KEY since we only need the files)
+# Collect static files to a staging directory (copied into volume at runtime)
 RUN SECRET_KEY=dummy-build-key DEBUG=False ALLOWED_HOSTS=* \
     EMAIL_HOST_USER=noop EMAIL_HOST_PASSWORD=noop \
+    STATIC_ROOT=/app/staticfiles_build \
     /venv/bin/python manage.py collectstatic --noinput
 
 
@@ -56,7 +57,8 @@ COPY --from=builder /app /app
 
 # Create directories for runtime data and give ownership to app user
 RUN mkdir -p /app/data /app/media /app/static && \
-    chown -R app:app /app
+    chown -R app:app /app && \
+    chmod +x /app/entrypoint.sh
 
 # Expose port
 EXPOSE 8000
@@ -68,5 +70,8 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
 # Run as non-root user
 USER app
 
+# Entrypoint: copy static files into volume, run migrations
+ENTRYPOINT ["/app/entrypoint.sh"]
+
 # Run gunicorn sized for a 2GB RAM droplet
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "2", "--threads", "2", "torres_web.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "2", "--threads", "2", "--access-logfile", "-", "--error-logfile", "-", "torres_web.wsgi:application"]
