@@ -1,57 +1,69 @@
 from invoke import task
 
+COMPOSE = "docker compose"
+EXEC = f"{COMPOSE} exec web"
+MANAGE = f"{EXEC} python manage.py"
+
+
+# --- Development (Docker) ---
+
 @task
-def dev(c):
-    """Run development server"""
-    c.run("python manage.py runserver 0.0.0.0:8000")
+def up(c):
+    """Start dev containers"""
+    c.run(f"{COMPOSE} up", pty=True)
+
+@task
+def down(c):
+    """Stop dev containers"""
+    c.run(f"{COMPOSE} down")
+
+@task
+def build(c):
+    """Rebuild Docker image"""
+    c.run(f"{COMPOSE} build")
+
+@task
+def logs(c):
+    """Tail dev container logs"""
+    c.run(f"{COMPOSE} logs -f", pty=True)
 
 @task
 def migrate(c):
-    """Run migrations"""
-    c.run("python manage.py migrate")
+    """Run database migrations"""
+    c.run(f"{MANAGE} migrate")
 
 @task
 def makemigrations(c):
-    """Make migrations"""
-    c.run("python manage.py makemigrations")
+    """Generate new migrations"""
+    c.run(f"{MANAGE} makemigrations")
 
 @task
 def shell(c):
-    """Run shell"""
-    c.run("python manage.py shell")
+    """Open Django shell"""
+    c.run(f"{MANAGE} shell", pty=True)
 
 @task
 def test(c):
     """Run tests"""
-    c.run("python manage.py test")
+    c.run(f"{MANAGE} test")
 
 @task
-def docker_build(c):
-    """Build Docker image"""
-    c.run("docker compose build")
+def createsuperuser(c):
+    """Create admin user"""
+    c.run(f"{MANAGE} createsuperuser", pty=True)
 
 @task
-def docker_up(c):
-    """Start Docker services"""
-    c.run("docker compose up")
+def bash(c):
+    """Open bash shell in container"""
+    c.run(f"{EXEC} bash", pty=True)
 
 @task
-def docker_down(c):
-    """Stop Docker services"""
-    c.run("docker compose down")
-
-@task
-def docker_run(c, cmd):
-    """Run a command inside the docker container. Usage: inv docker-run 'migrate'"""
-    c.run(f"docker compose exec web inv {cmd}")
-
-@task
-def docker_shell(c):
-    """Open a shell inside the docker container"""
-    c.run("docker compose exec web bash")
+def manage(c, cmd):
+    """Run any manage.py command. Usage: inv manage 'collectstatic --noinput'"""
+    c.run(f"{MANAGE} {cmd}")
 
 
-# --- Production tasks (require DROPLET_IP env var) ---
+# --- Production (require DROPLET_IP env var) ---
 
 @task
 def prod_logs(c):
@@ -62,7 +74,6 @@ def prod_logs(c):
         pty=True,
     )
 
-
 @task
 def prod_shell(c):
     """Open Django shell on production. Requires DROPLET_IP env var."""
@@ -71,7 +82,6 @@ def prod_shell(c):
         "'cd /opt/torres-yardworks && docker compose -f compose.prod.yaml exec web python manage.py shell'",
         pty=True,
     )
-
 
 @task
 def prod_backup(c):

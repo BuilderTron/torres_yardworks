@@ -1,79 +1,79 @@
-# Torres Contractors Website 2021
-**Version 2**
+# Torres Yardworks
 
-This is Torres Yardworks website managed by
-Jose J. Lopez.
+Marketing website for Torres Yardworks, a Houston landscaping and construction company.
 
----
+Built with Django 5.1, served by Gunicorn behind Caddy (auto-SSL), deployed to DigitalOcean via GitHub Actions.
 
-## Contents
+**Live:** [torresyardworks.com](https://torresyardworks.com)
 
-- About
-- Services
-- Galleries
-- Contact
----
-
-## License & copyright
-
-Copyright (c) [2021] [Torres Yardworks]
-
----
-
-## Link
-[torresyardworks.com]()
-
----
-
-## Development Setup
+## Quick Start
 
 ### Prerequisites
-- [uv](https://github.com/astral-sh/uv) (for dependency management)
-- Docker (optional, for containerized environment)
 
-### Local Development
-1.  **Install dependencies**:
-    ```bash
-    uv sync
-    ```
+- [Docker](https://docs.docker.com/get-docker/)
+- [uv](https://docs.astral.sh/uv/) + `uv sync` (for `inv` shortcuts)
 
-2.  **Activate virtual environment**:
-    ```bash
-    source .venv/bin/activate
-    ```
+### Development
 
-3.  **Start the server**:
-    ```bash
-    inv dev
-    ```
+```bash
+inv up
+```
 
-The site will be available at **[http://localhost:8000](http://localhost:8000)**.
-Access the admin panel at **[http://localhost:8000/admin](http://localhost:8000/admin)**.
+Site: <http://localhost:8000> | Admin: <http://localhost:8000/admin/>
 
-### Docker
-To run using Docker:
+Migrations run automatically on start. Hot reload is enabled. Emails print to the container logs.
 
-1.  **Activate virtual environment** (if not already active):
-    ```bash
-    source .venv/bin/activate
-    ```
+## Commands
 
-2.  **Start the container**:
-    ```bash
-    inv docker-up
-    ```
-    (Or `docker compose up`)
+All commands use [invoke](https://www.pyinvoke.org/) (`inv`) and run inside Docker:
 
-The site will be available at same address: **[http://localhost:8000](http://localhost:8000)**.
-**Auto-reload enabled**: Changes to your code will automatically reload the server in the container.
+| Command                | Description                      |
+| ---------------------- | -------------------------------- |
+| `inv up`               | Start dev containers             |
+| `inv down`             | Stop dev containers              |
+| `inv build`            | Rebuild Docker image             |
+| `inv logs`             | Tail container logs              |
+| `inv migrate`          | Run database migrations          |
+| `inv makemigrations`   | Generate new migrations          |
+| `inv shell`            | Open Django shell                |
+| `inv test`             | Run tests                        |
+| `inv createsuperuser`  | Create admin user                |
+| `inv bash`             | Bash shell in container          |
+| `inv manage '<cmd>'`   | Run any manage.py command        |
 
-### Common Commands (in Docker)
-To run commands *inside* the running container:
+### Production
 
-- `inv docker-run migrate` - Run migrations inside Docker
-- `inv docker-run makemigrations` - Make migrations inside Docker
-- `inv docker-shell` - Open a bash shell inside the container
+| Command          | Description                         |
+| ---------------- | ----------------------------------- |
+| `inv prod-logs`  | Tail production logs via SSH        |
+| `inv prod-shell` | Django shell on production server   |
+| `inv prod-backup`| Trigger manual backup on production |
 
-### Common Commands (Local)
-- `inv migrate` - Run database migrations locally
-- `inv makemigrations` - Create new migrations locally
+Requires `DROPLET_IP` environment variable.
+
+## Deployment
+
+Push to `main` triggers automatic deployment via GitHub Actions:
+
+1. Run tests
+2. Build Docker image and push to GHCR
+3. SSH into Droplet, pull image, restart services
+
+See [docs/droplet-setup.md](docs/droplet-setup.md) for server provisioning.
+
+## Architecture
+
+```text
+Internet → Caddy (ports 80/443, auto-SSL) → Gunicorn (port 8000) → SQLite
+                    ↓
+          /static/ and /media/ served directly
+```
+
+- **Web:** Django 5.1 + Gunicorn (2 workers, 2 threads)
+- **Proxy:** Caddy 2 (TLS, static files, security headers, gzip)
+- **Database:** SQLite with WAL mode
+- **CI/CD:** GitHub Actions → GHCR → SSH deploy
+
+## License
+
+Copyright (c) Torres Yardworks

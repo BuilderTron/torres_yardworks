@@ -1,12 +1,19 @@
 services:
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    entrypoint: []
+    command: >
+      sh -c "python manage.py migrate --noinput &&
+             python manage.py runserver 0.0.0.0:8000"
+    user: root
     volumes:
       - .:/app
     ports:
       - "8000:8000"
     environment:
-      - DEBUG=1
-      - SECRET_KEY=django-insecure-test-key-replace-me
+      - DEBUG=True
+      - SECRET_KEY=django-insecure-dev-key-do-not-use-in-production
       - ALLOWED_HOSTS=*
+      - EMAIL_HOST_USER=dev@localhost
+      - EMAIL_HOST_PASSWORD=dev
+      - EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
