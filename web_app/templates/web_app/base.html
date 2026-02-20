@@ -73,7 +73,7 @@
                             <li><a href="{% url 'indoor' %}">Indoor Remodel</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a href="{% url 'gallery' %}">Gallery</a></li>
+                    {% if debug %}<li class="dropdown"><a href="{% url 'gallery' %}">Gallery</a></li>{% endif %}
                     <li><a href="{% url 'contact' %}">Contact</a></li>
                 </ul>
                 <div class="request_btn">
@@ -124,10 +124,10 @@
                         <li>
                             <a href="{% url 'about' %}"><i aria-hidden="true" class="fa fa-angle-right"></i>About Us</a>
                         </li>
-                        <li>
+                        {% if debug %}<li>
                             <a href="{% url 'gallery' %}"><i aria-hidden="true"
                                     class="fa fa-angle-right"></i>Gallery</a>
-                        </li>
+                        </li>{% endif %}
                         <li>
                             <a href="{% url 'contact' %}"><i aria-hidden="true" class="fa fa-angle-right"></i>Contact
                                 Us</a>
