@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.urls import path
 from . import views
 
@@ -13,14 +14,16 @@ urlpatterns = [
     path('outdoor', views.outdoor, name="outdoor"),
     path('indoor', views.indoor, name="indoor"),
 
-    path('gallery', views.gallery, name="gallery"),
-
     path('contact', views.contact, name="contact"),
-    
+
     path('free_quote', views.free_quote, name="free_quote"),
 
     path('thank_you', views.thank_you, name="thank_you"),
 
     path('test', views.test, name="test"),
-
 ]
+
+if settings.DEBUG:
+    urlpatterns += [
+        path('gallery', views.gallery, name="gallery"),
+    ]

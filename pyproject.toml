@@ -12,6 +12,7 @@ dependencies = [
     "et-xmlfile>=2.0.0",
     "gunicorn>=25.0.2",
     "invoke>=2.2.1",
+    "mcp-django>=0.13.0",
     "odfpy>=1.4.1",
     "openpyxl>=3.1.5",
     "phonenumbers>=9.0.23",
