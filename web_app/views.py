@@ -1,6 +1,11 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.core.mail import send_mail
 from .models import HeroSlide, Event, ClientLeads, GalleryUpload, Testimonies
+
+
+def health_check(request):
+    return JsonResponse({"status": "ok"})
 
 
 
