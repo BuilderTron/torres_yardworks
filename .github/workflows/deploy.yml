@@ -73,5 +73,5 @@ jobs:
           script: |
             cd /opt/torres-yardworks
             docker compose -f compose.prod.yaml pull
-            docker compose -f compose.prod.yaml up -d
+            docker compose -f compose.prod.yaml up -d --wait --timeout 60
             docker image prune -f

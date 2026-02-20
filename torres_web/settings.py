@@ -35,7 +35,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(' ')
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 
 
 # Application definition
@@ -95,10 +95,8 @@ DATABASES = {
         'NAME': DATABASE_DIR / 'db.sqlite3',
         'OPTIONS': {
             'transaction_mode': 'IMMEDIATE',
-            'init_command': (
-                'PRAGMA journal_mode=wal;'
-                'PRAGMA busy_timeout=5000;'
-            ),
+            'timeout': 5,
+            'init_command': 'PRAGMA journal_mode=wal;',
         },
     }
 }

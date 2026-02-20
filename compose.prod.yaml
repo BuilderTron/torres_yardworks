@@ -1,6 +1,6 @@
 services:
   web:
-    image: ghcr.io/OWNER/torres-yardworks:latest
+    image: ghcr.io/buildertron/torres-yardworks:latest
     env_file: .env.prod
     volumes:
       - sqlite-data:/app/data

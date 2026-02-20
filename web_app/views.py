@@ -1,3 +1,4 @@
+from django.db import connection
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.core.mail import send_mail
@@ -5,6 +6,8 @@ from .models import HeroSlide, Event, ClientLeads, GalleryUpload, Testimonies
 
 
 def health_check(request):
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT 1")
     return JsonResponse({"status": "ok"})
 
 
