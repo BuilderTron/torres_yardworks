@@ -1,0 +1,40 @@
+services:
+  web:
+    image: ghcr.io/OWNER/torres-yardworks:latest
+    env_file: .env.prod
+    volumes:
+      - sqlite-data:/app/data
+      - media-data:/app/media
+      - static-data:/app/static
+    expose:
+      - "8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health/')"]
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+      - static-data:/srv/static:ro
+      - media-data:/srv/media:ro
+    depends_on:
+      web:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  sqlite-data:
+  media-data:
+  static-data:
+  caddy-data:
+  caddy-config:

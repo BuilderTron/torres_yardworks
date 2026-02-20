@@ -1,0 +1,35 @@
+# Version control
+.git
+.gitignore
+
+# Environment files
+.env
+.env.prod
+.venv
+
+# Tool config directories
+.claude
+.serena
+.github
+
+# Python artifacts
+__pycache__
+*.pyc
+*.pyo
+
+# Database
+db.sqlite3
+db.sqlite3-journal
+
+# Runtime data (mounted as volumes in production)
+media/
+static/
+
+# Documentation
+*.md
+LICENSE
+docs/
+
+# Docker / deployment config (not needed inside the image)
+compose*.yaml
+Caddyfile

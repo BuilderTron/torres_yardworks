@@ -1,0 +1,31 @@
+# Redirect www to apex domain
+www.torresyardworks.com {
+	redir https://torresyardworks.com{uri} permanent
+}
+
+torresyardworks.com {
+	# Compression
+	encode gzip
+
+	# Security headers
+	header {
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "strict-origin-when-cross-origin"
+	}
+
+	# Serve static files directly from the shared volume
+	handle_path /static/* {
+		root * /srv/static
+		file_server
+	}
+
+	# Serve media files directly from the shared volume
+	handle_path /media/* {
+		root * /srv/media
+		file_server
+	}
+
+	# Reverse proxy everything else to the Django/Gunicorn container
+	reverse_proxy web:8000
+}
