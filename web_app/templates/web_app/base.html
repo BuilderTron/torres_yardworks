@@ -4,6 +4,17 @@
 
 <head>
     <meta charset="UTF-8" />
+    {% if not show_debug %}
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VYE9LHV7CJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-VYE9LHV7CJ');
+    </script>
+    {% endif %}
     <title>Torres Yardworks | Houston Landscaping & Construction</title>
     <!-- Favicons -->
     <link rel="icon" href="{% static 'web_app/images/base/logo/tc_favicon.png' %}" sizes="32x32" />
