@@ -1,0 +1,13 @@
+Hi {{ lead.first_name|default:"there" }},
+
+Thanks for reaching out to Torres Yardworks. We received your {{ lead.form_name|lower }} submission and someone from our team will follow up within one business day.
+
+For reference, here's what you sent:
+
+{{ lead.message|default:"(no message)" }}
+
+If anything's urgent, you can reply to this email or call us — we're happy to talk through your project.
+
+— The Torres Yardworks team
+Houston, TX
+info@torresyardworks.com
