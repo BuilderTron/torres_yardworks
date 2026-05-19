@@ -227,7 +227,20 @@
           <h3>FREE ESTIMATE</h3>
           <form id="contact-form" method="post">
             {% csrf_token %}
-            <div class="messages"></div>
+            {{ form.website }}
+            <div class="messages">
+              {% if form.errors %}
+                <div class="alert alert-danger">
+                  <strong>Please fix the errors below.</strong>
+                  {{ form.non_field_errors }}
+                  {% for field in form %}
+                    {% for error in field.errors %}
+                      <div>{{ field.label|default:field.name }}: {{ error }}</div>
+                    {% endfor %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group request_Form_group">
@@ -274,6 +287,9 @@
                     class="form-control request_form_input height_141"></textarea>
                   <div class="help-block with-errors"></div>
                 </div>
+              </div>
+              <div class="col-md-12" style="margin-bottom: 16px;">
+                {{ form.captcha }}
               </div>
               <div class="col-md-12">
                 <input type="submit" value="Send" class="btn send_btn" />
