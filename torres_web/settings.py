@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'phonenumber_field',
     'import_export',
+    'anymail',
+    'turnstile',
     'web_app',
 ]
 
@@ -161,15 +163,42 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 
-# Send Email
+# Send Email — Anymail HTTP API (Resend) in prod, console in dev.
+# Dev override happens via EMAIL_BACKEND env var in compose.yaml.
 
-EMAIL_BACKEND = env('EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
+EMAIL_BACKEND = env(
+    'EMAIL_BACKEND',
+    default='django.core.mail.backends.console.EmailBackend',
+)
+DEFAULT_FROM_EMAIL = env(
+    'DEFAULT_FROM_EMAIL',
+    default='Torres Yardworks <info@torresyardworks.com>',
+)
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
+LEADS_EMAIL = env('LEADS_EMAIL', default='info@torresyardworks.com')
+
+ANYMAIL = {
+    'RESEND_API_KEY': env('RESEND_API_KEY', default=''),
+}
+
+# Cloudflare Turnstile — defaults are Cloudflare's documented test keys,
+# which always pass and only work for testing. Override in .env.prod.
+TURNSTILE_SITEKEY = env(
+    'TURNSTILE_SITE_KEY', default='1x00000000000000000000AA',
+)
+TURNSTILE_SECRET = env(
+    'TURNSTILE_SECRET_KEY',
+    default='1x0000000000000000000000000000000AA',
+)
+
+# django-ratelimit cache — LocMemCache is per-process, fine for our
+# single-Gunicorn-worker deployment. Revisit when scaling out.
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'torres-default',
+    },
+}
 
 
 # Default primary key field type
