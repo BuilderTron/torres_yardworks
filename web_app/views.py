@@ -1,13 +1,34 @@
 import logging
 
+from functools import wraps
+
 from django.db import connection
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
+from django_ratelimit.decorators import ratelimit
 
 from .emails import send_lead_autoreply, send_lead_notification
 from .forms import ContactForm, FreeQuoteForm, HomeQuickForm
 from .models import Event, GalleryUpload, HeroSlide, Testimonies
+
+# Per-IP rate cap on lead-form POSTs. Counters live in LocMemCache (see
+# settings.CACHES). We layer this on top of ratelimit(block=False) so we
+# can return a proper 429 — block=True would raise Ratelimited (a
+# PermissionDenied subclass) which Django renders as 403.
+LEAD_RATE = '5/h'
+
+
+def _rate_limited_response(view_func):
+    """Return 429 when @ratelimit(block=False) has flagged request.limited."""
+
+    @wraps(view_func)
+    def _wrapped(request, *args, **kwargs):
+        if getattr(request, 'limited', False):
+            return render(request, 'web_app/rate_limited.html', status=429)
+        return view_func(request, *args, **kwargs)
+
+    return _wrapped
 
 logger = logging.getLogger(__name__)
 
@@ -51,7 +72,12 @@ def health_check(request):
     return JsonResponse({"status": "ok"})
 
 
+
+
+
 @require_http_methods(["GET", "POST"])
+@ratelimit(key='ip', rate=LEAD_RATE, method='POST', block=False)
+@_rate_limited_response
 def home(request):
     if request.method == "POST":
         form = HomeQuickForm(data=request.POST, remote_ip=_client_ip(request))
@@ -97,6 +123,8 @@ def gallery(request):
 
 
 @require_http_methods(["GET", "POST"])
+@ratelimit(key='ip', rate=LEAD_RATE, method='POST', block=False)
+@_rate_limited_response
 def contact(request):
     if request.method == "POST":
         form = ContactForm(data=request.POST, remote_ip=_client_ip(request))
@@ -109,6 +137,8 @@ def contact(request):
 
 
 @require_http_methods(["GET", "POST"])
+@ratelimit(key='ip', rate=LEAD_RATE, method='POST', block=False)
+@_rate_limited_response
 def free_quote(request):
     if request.method == "POST":
         form = FreeQuoteForm(data=request.POST, remote_ip=_client_ip(request))

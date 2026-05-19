@@ -1,10 +1,18 @@
 """Integration tests for the three lead-capture views."""
 
 from django.core import mail
+from django.core.cache import cache
 from django.test import TestCase
 from django.urls import reverse
 
 from web_app.models import ClientLeads
+
+
+class LeadViewTestCase(TestCase):
+    """Base: clears the process-wide rate-limit cache before each test."""
+
+    def setUp(self):
+        cache.clear()
 
 
 def _quick_data(**overrides):
@@ -45,7 +53,7 @@ def _quote_data(**overrides):
     return data
 
 
-class HomeViewTests(TestCase):
+class HomeViewTests(LeadViewTestCase):
     def test_get_returns_200(self):
         response = self.client.get(reverse('home'))
         self.assertEqual(response.status_code, 200)
@@ -84,7 +92,7 @@ class HomeViewTests(TestCase):
         self.assertEqual(len(mail.outbox), 0)
 
 
-class ContactViewTests(TestCase):
+class ContactViewTests(LeadViewTestCase):
     def test_get_returns_200(self):
         response = self.client.get(reverse('contact'))
         self.assertEqual(response.status_code, 200)
@@ -103,7 +111,7 @@ class ContactViewTests(TestCase):
         self.assertEqual(len(mail.outbox), 0)
 
 
-class FreeQuoteViewTests(TestCase):
+class FreeQuoteViewTests(LeadViewTestCase):
     def test_get_returns_200(self):
         response = self.client.get(reverse('free_quote'))
         self.assertEqual(response.status_code, 200)
@@ -121,7 +129,37 @@ class FreeQuoteViewTests(TestCase):
         self.assertEqual(len(mail.outbox), 0)
 
 
-class EmailFailureProtectsLeadTests(TestCase):
+class RateLimitTests(LeadViewTestCase):
+    """Per-IP rate limit on lead POSTs.
+
+    LocMemCache is per-process; tearing down between tests is handled
+    by clearing the cache in setUp.
+    """
+
+    def setUp(self):
+        from django.core.cache import cache
+        cache.clear()
+
+    def test_sixth_post_in_a_window_is_blocked(self):
+        # First 5 valid POSTs succeed.
+        for i in range(5):
+            response = self.client.post(reverse('home'), data=_quick_data(email=f'jane{i}@example.com'))
+            self.assertEqual(response.status_code, 200, f'POST #{i + 1} failed')
+
+        # 6th is blocked with 429.
+        response = self.client.post(reverse('home'), data=_quick_data(email='spam@example.com'))
+        self.assertEqual(response.status_code, 429)
+        # The 6th submission must NOT have created a lead or sent mail.
+        self.assertEqual(ClientLeads.objects.count(), 5)
+
+    def test_rate_limit_does_not_block_get(self):
+        # GET is not POST-method-rate-limited; should always serve.
+        for _ in range(10):
+            response = self.client.get(reverse('home'))
+            self.assertEqual(response.status_code, 200)
+
+
+class EmailFailureProtectsLeadTests(LeadViewTestCase):
     """If Resend (or any send_mail call) explodes, the ClientLead must persist.
 
     Patches ``send_lead_notification`` to raise; verifies the lead row is
