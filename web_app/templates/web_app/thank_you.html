@@ -40,7 +40,7 @@
             </h3>
             <div class="stop_buttons">
                 <a href="{% url 'home' %}" class="view-all hvr-bounce-to-right slide_contact_btn slide_service_btn flnone margin_rght">Home</a>
-                <a href="{% url 'gallery' %}" class="view-all hvr-bounce-to-right slide_contact_btn flnone">Gallery</a>
+                {% if show_debug %}<a href="{% url 'gallery' %}" class="view-all hvr-bounce-to-right slide_contact_btn flnone">Gallery</a>{% endif %}
             </div>
         </div>
     </div>

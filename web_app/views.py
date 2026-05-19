@@ -1,8 +1,69 @@
+import logging
+
+from functools import wraps
+
 from django.db import connection
 from django.http import JsonResponse
 from django.shortcuts import render
-from django.core.mail import send_mail
-from .models import HeroSlide, Event, ClientLeads, GalleryUpload, Testimonies
+from django.views.decorators.http import require_http_methods
+from django_ratelimit.decorators import ratelimit
+
+from .emails import send_lead_autoreply, send_lead_notification
+from .forms import ContactForm, FreeQuoteForm, HomeQuickForm
+from .models import Event, GalleryUpload, HeroSlide, Testimonies
+
+# Per-IP rate cap on lead-form POSTs. Counters live in LocMemCache (see
+# settings.CACHES). We layer this on top of ratelimit(block=False) so we
+# can return a proper 429 — block=True would raise Ratelimited (a
+# PermissionDenied subclass) which Django renders as 403.
+LEAD_RATE = '5/h'
+
+
+def _rate_limited_response(view_func):
+    """Return 429 when @ratelimit(block=False) has flagged request.limited."""
+
+    @wraps(view_func)
+    def _wrapped(request, *args, **kwargs):
+        if getattr(request, 'limited', False):
+            return render(request, 'web_app/rate_limited.html', status=429)
+        return view_func(request, *args, **kwargs)
+
+    return _wrapped
+
+logger = logging.getLogger(__name__)
+
+
+def _client_ip(request) -> str:
+    """Extract the originating client IP, honoring X-Forwarded-For from Caddy."""
+    xff = request.META.get('HTTP_X_FORWARDED_FOR', '')
+    if xff:
+        return xff.split(',')[0].strip()
+    return request.META.get('REMOTE_ADDR', '')
+
+
+def _handle_lead_post(request, form, *, form_name: str):
+    """Save the lead, fire both emails, return the rendered thank-you page.
+
+    Email failures are logged but do NOT roll back the lead — the row in
+    ``ClientLeads`` is the source of truth; the email is a convenience
+    notification. The owner can always recover the lead via the admin
+    export (`django-import-export`).
+    """
+    lead = form.save()
+    try:
+        send_lead_notification(lead, form_name=form_name)
+    except Exception:  # noqa: BLE001 — we deliberately swallow to protect lead persistence
+        logger.exception("Failed to send lead notification for ClientLeads #%s", lead.pk)
+    try:
+        send_lead_autoreply(lead, form_name=form_name)
+    except Exception:  # noqa: BLE001
+        logger.exception("Failed to send autoreply for ClientLeads #%s", lead.pk)
+    return render(request, 'web_app/thank_you.html', {'first_name': lead.first_name})
+
+
+# ---------------------------------------------------------------------------
+# Public pages
+# ---------------------------------------------------------------------------
 
 
 def health_check(request):
@@ -12,36 +73,25 @@ def health_check(request):
 
 
 
-# Home page.
 
 
+@require_http_methods(["GET", "POST"])
+@ratelimit(key='ip', rate=LEAD_RATE, method='POST', block=False)
+@_rate_limited_response
 def home(request):
-    slide = HeroSlide.objects.all()
-    event = Event.objects.all()
-    testimony = Testimonies.objects.all()
-    if request.method=="POST":
-        first_name = request.POST['name']
-        email = request.POST['email']
-        phone = request.POST['phone']
-        service = request.POST['service']
-        message = request.POST['message']
-        ins = ClientLeads(first_name=first_name,email=email,phone=phone,service=service,message=message)
-        ins.save()
-
-        msg_mail = "Name: " + str(first_name) + "\n\nEmail: " + str(email) + "\n\nPhone: " + str(phone) + "\n\nService: " + str(service) + "\n\nMessage: " + str(message)
-        # Send Email
-        send_mail(
-            'Torres Small Request Form by: ' + first_name,  # subject
-            msg_mail,
-            email,
-            ['torresyardworks@gmail.com'],  # to email
-            fail_silently=False,
-        )
-        print("Data has been written in db.")
-        return render(request, 'web_app/thank_you.html', {'first_name': first_name})
+    if request.method == "POST":
+        form = HomeQuickForm(data=request.POST, remote_ip=_client_ip(request))
+        if form.is_valid():
+            return _handle_lead_post(request, form, form_name='Quick Estimate')
     else:
-        return render(request, 'web_app/index.html', {'slides': slide, 'events': event, 'testimonys': testimony})
+        form = HomeQuickForm(remote_ip=_client_ip(request))
 
+    return render(request, 'web_app/index.html', {
+        'slides': HeroSlide.objects.all(),
+        'events': Event.objects.all(),
+        'testimonys': Testimonies.objects.all(),
+        'form': form,
+    })
 
 
 def about(request):
@@ -69,64 +119,40 @@ def indoor(request):
 
 
 def gallery(request):
-    photo = GalleryUpload.objects.all()
-    return render(request, 'web_app/gallery.html', {'photos': photo})
+    return render(request, 'web_app/gallery.html', {'photos': GalleryUpload.objects.all()})
 
 
+@require_http_methods(["GET", "POST"])
+@ratelimit(key='ip', rate=LEAD_RATE, method='POST', block=False)
+@_rate_limited_response
 def contact(request):
-    if request.method=="POST":
-        first_name = request.POST['name']
-        email = request.POST['email']
-        subject = request.POST['subject']
-        message = request.POST['message']
-        ins = ClientLeads(first_name=first_name,email=email,subject=subject,message=message)
-        ins.save()
-
-        msg_mail = "Name: " + str(first_name) + "\n\nEmail: " + str(email) + "\n\nSubject: " + str(subject) + "\n\nMessage: " + str(message)
-        # Send Email
-        send_mail(
-            'Torres Contact Form by: ' + first_name,  # subject
-            msg_mail,
-            email,
-            ['torresyardworks@gmail.com'],  # to email
-            fail_silently=False,
-        )
-        print("Data has been written in db.")
-        return render(request, 'web_app/thank_you.html', {'first_name': first_name})
+    if request.method == "POST":
+        form = ContactForm(data=request.POST, remote_ip=_client_ip(request))
+        if form.is_valid():
+            return _handle_lead_post(request, form, form_name='Contact')
     else:
-        return render(request, 'web_app/contact.html', {})
-    
+        form = ContactForm(remote_ip=_client_ip(request))
 
+    return render(request, 'web_app/contact.html', {'form': form})
+
+
+@require_http_methods(["GET", "POST"])
+@ratelimit(key='ip', rate=LEAD_RATE, method='POST', block=False)
+@_rate_limited_response
 def free_quote(request):
-    if request.method=="POST":
-        first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
-        email = request.POST['email']
-        phone = request.POST['phone']
-        address = request.POST['address']
-        date = request.POST['date']
-        service = request.POST['service']
-        message = request.POST['message']
-        ins = ClientLeads(first_name=first_name,last_name=last_name,email=email,phone=phone,address=address,date=date,service=service,message=message)
-        ins.save()
-
-        msg_mail = "Name: " + str(first_name) + " " + str(last_name) + "\n\nEmail: " + str(email) + "\n\nPhone: " + str(phone) + "\n\nAddress: " + str(address) + "\n\nDate: " + str(date) + "\n\nService: " + str(service) + "\n\nMessage: " + str(message)
-        # Send Email
-        send_mail(
-            'Torres Request Form by: ' + first_name + " " + last_name,  # subject
-            msg_mail,
-            email,
-            ['torresyardworks@gmail.com'],  # to email
-            fail_silently=False,
-        )
-        print("Data has been written in db.")
-        return render(request, 'web_app/thank_you.html', {'first_name': first_name})
+    if request.method == "POST":
+        form = FreeQuoteForm(data=request.POST, remote_ip=_client_ip(request))
+        if form.is_valid():
+            return _handle_lead_post(request, form, form_name='Free Quote')
     else:
-        return render(request, 'web_app/request_quote.html', {})
+        form = FreeQuoteForm(remote_ip=_client_ip(request))
+
+    return render(request, 'web_app/request_quote.html', {'form': form})
 
 
 def thank_you(request):
     return render(request, 'web_app/thank_you.html', {})
+
 
 # Test page for models and forms
 def test(request):

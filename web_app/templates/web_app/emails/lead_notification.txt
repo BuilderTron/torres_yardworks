@@ -1,0 +1,15 @@
+New {{ lead.form_name }} submission on torresyardworks.com
+
+Name:    {{ lead.full_name|default:"(not provided)" }}
+Email:   {{ lead.email|default:"(not provided)" }}
+{% if lead.phone %}Phone:   {{ lead.phone }}
+{% endif %}{% if lead.address %}Address: {{ lead.address }}
+{% endif %}{% if lead.date %}Date:    {{ lead.date }}
+{% endif %}{% if lead.service %}Service: {{ lead.service }}
+{% endif %}{% if lead.subject %}Subject: {{ lead.subject }}
+{% endif %}
+Message:
+{{ lead.message|default:"(no message)" }}
+
+---
+Reply to this email to respond directly to the customer.
